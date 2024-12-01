@@ -22,6 +22,14 @@ const EquipmentTable: React.FC<{ data: Equipment[] }> = ({ data }) => {
   // Column helper for creating columns
   const columnHelper = createColumnHelper<Equipment>();
 
+  //custom sorting logic for one of our enum columns
+  const sortStatusFn: SortingFn<Equipment> = (rowA, rowB, _columnId) => {
+    const statusA = rowA.original.status;
+    const statusB = rowB.original.status;
+    const statusOrder = ["Operational", "Maintenance", "Down", "Retired"];
+    return statusOrder.indexOf(statusA) - statusOrder.indexOf(statusB);
+  };
+
   // Define columns for the table
   const columns = useMemo(
     () => [
@@ -46,6 +54,7 @@ const EquipmentTable: React.FC<{ data: Equipment[] }> = ({ data }) => {
       }),
       columnHelper.accessor("status", {
         header: "Status",
+        sortingFn: sortStatusFn, //use our custom sorting function for this enum column
         cell: (info) => (
           <span className={`status ${info.getValue().toLowerCase()}`}>
             {info.getValue()}
@@ -79,14 +88,6 @@ const EquipmentTable: React.FC<{ data: Equipment[] }> = ({ data }) => {
     setSelectedRows(newSelectedRows);
   };
 
-  //custom sorting logic for one of our enum columns
-  const sortStatusFn: SortingFn<Equipment> = (rowA, rowB, _columnId) => {
-    const statusA = rowA.original.status;
-    const statusB = rowB.original.status;
-    const statusOrder = ["Operational", "Down", "Maintenance", "Retired"];
-    return statusOrder.indexOf(statusA) - statusOrder.indexOf(statusB);
-  };
-
   // Function to apply bulk status update
   const applyBulkStatusUpdate = () => {
     console.log("Bulk updating selected rows to:", bulkStatus);
@@ -106,6 +107,7 @@ const EquipmentTable: React.FC<{ data: Equipment[] }> = ({ data }) => {
           onChange={(e) =>
             setBulkStatus(
               e.target.value as
+                | "All"
                 | "Operational"
                 | "Down"
                 | "Maintenance"
@@ -114,6 +116,7 @@ const EquipmentTable: React.FC<{ data: Equipment[] }> = ({ data }) => {
           }
           className="p-2 border rounded"
         >
+          <option value="All">All</option>
           <option value="Operational">Operational</option>
           <option value="Down">Down</option>
           <option value="Maintenance">Maintenance</option>

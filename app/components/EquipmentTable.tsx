@@ -7,14 +7,17 @@ import {
   getCoreRowModel,
   getSortedRowModel,
   createColumnHelper,
+  SortingFn,
+  SortingState,
 } from "@tanstack/react-table";
 import { Equipment } from "../types/equipment"; // Assuming Equipment type is defined here
 
 const EquipmentTable: React.FC<{ data: Equipment[] }> = ({ data }) => {
   const [selectedRows, setSelectedRows] = useState<Set<string>>(new Set());
   const [bulkStatus, setBulkStatus] = useState<
-    "Operational" | "Down" | "Maintenance" | "Retired"
-  >("Operational");
+    "All" | "Operational" | "Down" | "Maintenance" | "Retired"
+  >("All");
+  const [sorting, setSorting] = useState<SortingState>([]);
 
   // Column helper for creating columns
   const columnHelper = createColumnHelper<Equipment>();
@@ -57,8 +60,12 @@ const EquipmentTable: React.FC<{ data: Equipment[] }> = ({ data }) => {
   const table = useReactTable({
     data,
     columns,
+    state: {
+      sorting,
+    },
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
+    onSortingChange: setSorting,
   });
 
   // Function to toggle row selection
@@ -70,6 +77,14 @@ const EquipmentTable: React.FC<{ data: Equipment[] }> = ({ data }) => {
       newSelectedRows.add(rowId);
     }
     setSelectedRows(newSelectedRows);
+  };
+
+  //custom sorting logic for one of our enum columns
+  const sortStatusFn: SortingFn<Equipment> = (rowA, rowB, _columnId) => {
+    const statusA = rowA.original.status;
+    const statusB = rowB.original.status;
+    const statusOrder = ["Operational", "Down", "Maintenance", "Retired"];
+    return statusOrder.indexOf(statusA) - statusOrder.indexOf(statusB);
   };
 
   // Function to apply bulk status update
@@ -116,19 +131,32 @@ const EquipmentTable: React.FC<{ data: Equipment[] }> = ({ data }) => {
                   className="px-4 py-2 border-b text-left"
                   //   {...column.getHeaderProps()}
                 >
-                  <div>
+                  <div
+                    className={
+                      header.column.getCanSort()
+                        ? "cursor-pointer select-none"
+                        : ""
+                    }
+                    onClick={header.column.getToggleSortingHandler()}
+                    title={
+                      header.column.getCanSort()
+                        ? header.column.getNextSortingOrder() === "asc"
+                          ? "Sort ascending"
+                          : header.column.getNextSortingOrder() === "desc"
+                          ? "Sort descending"
+                          : "Clear sort"
+                        : undefined
+                    }
+                  >
                     {flexRender(
                       header.column.columnDef.header,
                       header.getContext()
                     )}
+                    {{
+                      asc: " 🔼",
+                      desc: " 🔽",
+                    }[header.column.getIsSorted() as string] ?? null}
                   </div>
-                  {/* <span>
-                    {header.getIsSorted()
-                      ? column.getIsSortedDesc()
-                        ? " 🔽"
-                        : " 🔼"
-                      : ""}
-                  </span> */}
                 </th>
               ))}
             </tr>

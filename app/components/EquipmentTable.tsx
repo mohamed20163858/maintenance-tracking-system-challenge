@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useEffect, useReducer } from "react";
+import { useState, useMemo } from "react";
 import {
   useReactTable,
   flexRender,
@@ -12,10 +12,11 @@ import {
   RowData,
   ColumnFiltersState,
   getFilteredRowModel,
-  Column,
   getPaginationRowModel,
 } from "@tanstack/react-table";
 import { Equipment } from "../types/equipment"; // Assuming Equipment type is defined here
+import Filter from "./Filter";
+import Pagination from "./Pagination";
 
 declare module "@tanstack/react-table" {
   //allows us to define custom properties for our columns
@@ -24,7 +25,6 @@ declare module "@tanstack/react-table" {
   }
 }
 const EquipmentTable: React.FC<{ data: Equipment[] }> = ({ data }) => {
-  const [selectedRows, setSelectedRows] = useState<Set<string>>(new Set());
   const [bulkStatus, setBulkStatus] = useState<
     "All" | "Operational" | "Down" | "Maintenance" | "Retired"
   >("All");
@@ -111,18 +111,6 @@ const EquipmentTable: React.FC<{ data: Equipment[] }> = ({ data }) => {
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
   });
-
-  // Function to toggle row selection
-  const toggleRowSelection = (rowId: string) => {
-    const newSelectedRows = new Set(selectedRows);
-    if (newSelectedRows.has(rowId)) {
-      newSelectedRows.delete(rowId);
-    } else {
-      newSelectedRows.add(rowId);
-    }
-    setSelectedRows(newSelectedRows);
-  };
-
   // Function to apply bulk status update
   const applyBulkStatusUpdate = () => {
     console.log("Bulk updating selected rows to:", bulkStatus);
@@ -233,176 +221,9 @@ const EquipmentTable: React.FC<{ data: Equipment[] }> = ({ data }) => {
           ))}
         </tbody>
       </table>
-      <div className="h-5" />
-      <div className="flex items-center justify-center gap-2">
-        <button
-          className="border rounded p-1"
-          onClick={() => table.setPageIndex(0)}
-          disabled={!table.getCanPreviousPage()}
-        >
-          {"<<"}
-        </button>
-        <button
-          className="border rounded p-1"
-          onClick={() => table.previousPage()}
-          disabled={!table.getCanPreviousPage()}
-        >
-          {"<"}
-        </button>
-        <button
-          className="border rounded p-1"
-          onClick={() => table.nextPage()}
-          disabled={!table.getCanNextPage()}
-        >
-          {">"}
-        </button>
-        <button
-          className="border rounded p-1"
-          onClick={() => table.setPageIndex(table.getPageCount() - 1)}
-          disabled={!table.getCanNextPage()}
-        >
-          {">>"}
-        </button>
-        <span className="flex items-center gap-1">
-          <div>Page</div>
-          <strong>
-            {table.getState().pagination.pageIndex + 1} of{" "}
-            {table.getPageCount()}
-          </strong>
-        </span>
-        <span className="flex items-center gap-1">
-          | Go to page:
-          <input
-            type="number"
-            min="1"
-            max={table.getPageCount()}
-            defaultValue={table.getState().pagination.pageIndex + 1}
-            onChange={(e) => {
-              const page = e.target.value ? Number(e.target.value) - 1 : 0;
-              table.setPageIndex(page);
-            }}
-            className="border p-1 rounded w-16"
-          />
-        </span>
-        <select
-          value={table.getState().pagination.pageSize}
-          onChange={(e) => {
-            table.setPageSize(Number(e.target.value));
-          }}
-        >
-          {[5, 10, 15, 20, 25].map((pageSize) => (
-            <option key={pageSize} value={pageSize}>
-              Show {pageSize}
-            </option>
-          ))}
-        </select>
-      </div>
-      {/* <div>{table.getPrePaginationRowModel().rows.length} Rows</div> */}
+      <Pagination table={table} />
     </div>
   );
 };
-
-function Filter({ column }: { column: Column<any, unknown> }) {
-  const columnFilterValue = column.getFilterValue();
-  const { filterVariant } = column.columnDef.meta ?? {};
-
-  return filterVariant === "range" ? (
-    <div>
-      <div className="flex space-x-2">
-        {/* See faceted column filters example for startDate endDate values functionality */}
-        <label htmlFor="equipment-start-date">Start Date:- </label>
-        <DebouncedInput
-          type="date"
-          id="equipment-start-date"
-          value={(columnFilterValue as [string, string])?.[0] ?? ""}
-          onChange={(value) =>
-            column.setFilterValue((old: [string, string]) => [value, old?.[1]])
-          }
-          placeholder={`Start Date`}
-          className="w-24 border shadow rounded"
-        />
-        <label htmlFor="equipment-end-date">End Date:- </label>
-        <DebouncedInput
-          type="date"
-          id="equipment-end-date"
-          value={(columnFilterValue as [string, string])?.[1] ?? ""}
-          onChange={(value) =>
-            column.setFilterValue((old: [string, string]) => [old?.[0], value])
-          }
-          placeholder={`End Date`}
-          className="w-24 border shadow rounded"
-        />
-      </div>
-      <div className="h-1" />
-    </div>
-  ) : filterVariant === "statusSelect" ? (
-    <select
-      onChange={(e) => column.setFilterValue(e.target.value)}
-      value={columnFilterValue?.toString()}
-    >
-      {/* See faceted column filters example for dynamic select options */}
-      <option value="">All</option>
-      <option value="Operational">Operational</option>
-      <option value="Maintenance">Maintenance</option>
-      <option value="Down">Down</option>
-      <option value="Retired">Retired</option>
-    </select>
-  ) : filterVariant === "departmentSelect" ? (
-    <select
-      onChange={(e) => column.setFilterValue(e.target.value)}
-      value={columnFilterValue?.toString()}
-    >
-      {/* See faceted column filters example for dynamic select options */}
-      <option value="">All</option>
-      <option value="Machining">Machining</option>
-      <option value="Assembly">Assembly</option>
-      <option value="Packaging">Packaging</option>
-      <option value="Shipping">Shipping</option>
-    </select>
-  ) : (
-    <DebouncedInput
-      className="w-36 border shadow rounded"
-      onChange={(value) => column.setFilterValue(value)}
-      placeholder={`Search...`}
-      type="text"
-      value={(columnFilterValue ?? "") as string}
-    />
-    // See faceted column filters example for datalist search suggestions
-  );
-}
-
-// A typical debounced input react component
-function DebouncedInput({
-  value: initialValue,
-  onChange,
-  debounce = 500,
-  ...props
-}: {
-  value: string | number;
-  onChange: (value: string | number) => void;
-  debounce?: number;
-} & Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange">) {
-  const [value, setValue] = useState(initialValue);
-
-  useEffect(() => {
-    setValue(initialValue);
-  }, [initialValue]);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      onChange(value);
-    }, debounce);
-
-    return () => clearTimeout(timeout);
-  }, [value]);
-
-  return (
-    <input
-      {...props}
-      value={value}
-      onChange={(e) => setValue(e.target.value)}
-    />
-  );
-}
 
 export default EquipmentTable;

@@ -118,36 +118,7 @@ const EquipmentTable: React.FC<{ data: Equipment[] }> = ({ data }) => {
 
   return (
     <div>
-      <div className="flex items-center mb-4">
-        <button
-          onClick={applyBulkStatusUpdate}
-          className="mr-2 p-2 bg-blue-500 text-white rounded"
-        >
-          Apply Bulk Status Update
-        </button>
-        <select
-          value={bulkStatus}
-          onChange={(e) =>
-            setBulkStatus(
-              e.target.value as
-                | "All"
-                | "Operational"
-                | "Down"
-                | "Maintenance"
-                | "Retired"
-            )
-          }
-          className="p-2 border rounded"
-        >
-          <option value="All">All</option>
-          <option value="Operational">Operational</option>
-          <option value="Down">Down</option>
-          <option value="Maintenance">Maintenance</option>
-          <option value="Retired">Retired</option>
-        </select>
-      </div>
-
-      <table className="min-w-full border-collapse">
+      <table className="min-w-full border-collapse mb-5">
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
@@ -222,6 +193,14 @@ const EquipmentTable: React.FC<{ data: Equipment[] }> = ({ data }) => {
         </tbody>
       </table>
       <Pagination table={table} />
+      <div className="flex items-center justify-center mt-4">
+        <button
+          onClick={applyBulkStatusUpdate}
+          className="mr-2 p-2 bg-blue-500 text-white rounded"
+        >
+          Apply Bulk Status Update
+        </button>
+      </div>
     </div>
   );
 };

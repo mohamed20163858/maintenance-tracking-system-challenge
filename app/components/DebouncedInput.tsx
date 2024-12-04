@@ -21,9 +21,9 @@ export default function DebouncedInput({
     const timeout = setTimeout(() => {
       onChange(value);
     }, debounce);
-
+    console.log(value);
     return () => clearTimeout(timeout);
-  }, [debounce, onChange, value]);
+  }, [value]);
 
   return (
     <input

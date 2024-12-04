@@ -49,6 +49,156 @@
       "serialNumber": "SN741258",
       "installDate": "2019-06-25",
       "status": "Retired"
+    },
+    {
+      "id": "6",
+      "name": "CNC Lathe 3000",
+      "location": "Building A - Floor 1",
+      "department": "Machining",
+      "model": "LT-3000",
+      "serialNumber": "SN1234567890",
+      "installDate": "2021-03-15",
+      "status": "Operational"
+    },
+    {
+      "id": "7",
+      "name": "Assembly Robot XR1",
+      "location": "Building B - Line 3",
+      "department": "Assembly",
+      "model": "XR1-2021",
+      "serialNumber": "SN0987654321",
+      "installDate": "2022-07-10",
+      "status": "Maintenance"
+    },
+    {
+      "id": "8",
+      "name": "Packaging Conveyor 500",
+      "location": "Building C - Bay 2",
+      "department": "Packaging",
+      "model": "CV-500",
+      "serialNumber": "SN2233445566",
+      "installDate": "2019-06-22",
+      "status": "Operational"
+    },
+    {
+      "id": "9",
+      "name": "Shipping Scale Pro",
+      "location": "Building D - Dock 1",
+      "department": "Shipping",
+      "model": "SS-Pro",
+      "serialNumber": "SN3344556677",
+      "installDate": "2020-11-13",
+      "status": "Down"
+    },
+    {
+      "id": "10",
+      "name": "CNC Milling Machine 900",
+      "location": "Building A - Floor 2",
+      "department": "Machining",
+      "model": "MM-900",
+      "serialNumber": "SN4455667788",
+      "installDate": "2018-05-19",
+      "status": "Retired"
+    },
+    {
+      "id": "11",
+      "name": "Robotic Arm AS100",
+      "location": "Building B - Line 5",
+      "department": "Assembly",
+      "model": "AS100-2019",
+      "serialNumber": "SN5566778899",
+      "installDate": "2019-12-01",
+      "status": "Operational"
+    },
+    {
+      "id": "12",
+      "name": "Shrink Wrap System 300",
+      "location": "Building C - Bay 4",
+      "department": "Packaging",
+      "model": "SW-300",
+      "serialNumber": "SN6677889900",
+      "installDate": "2021-09-14",
+      "status": "Operational"
+    },
+    {
+      "id": "13",
+      "name": "Dock Loader Elite",
+      "location": "Building D - Dock 2",
+      "department": "Shipping",
+      "model": "DL-Elite",
+      "serialNumber": "SN7788990011",
+      "installDate": "2023-01-08",
+      "status": "Maintenance"
+    },
+    {
+      "id": "14",
+      "name": "Precision Lathe PT500",
+      "location": "Building A - Floor 3",
+      "department": "Machining",
+      "model": "PT-500",
+      "serialNumber": "SN8899001122",
+      "installDate": "2020-04-23",
+      "status": "Operational"
+    },
+    {
+      "id": "15",
+      "name": "Welding Robot WR-300",
+      "location": "Building B - Line 7",
+      "department": "Assembly",
+      "model": "WR-300",
+      "serialNumber": "SN9900112233",
+      "installDate": "2022-10-17",
+      "status": "Down"
+    },
+    {
+      "id": "16",
+      "name": "Palletizer PR2000",
+      "location": "Building C - Bay 6",
+      "department": "Packaging",
+      "model": "PR-2000",
+      "serialNumber": "SN0011223344",
+      "installDate": "2023-04-12",
+      "status": "Operational"
+    },
+    {
+      "id": "17",
+      "name": "Forklift FLX-Pro",
+      "location": "Building D - Dock 3",
+      "department": "Shipping",
+      "model": "FLX-Pro",
+      "serialNumber": "SN1122334455",
+      "installDate": "2017-08-25",
+      "status": "Retired"
+    },
+    {
+      "id": "18",
+      "name": "Grinding Machine GM-700",
+      "location": "Building A - Floor 4",
+      "department": "Machining",
+      "model": "GM-700",
+      "serialNumber": "SN2233445566",
+      "installDate": "2016-03-07",
+      "status": "Operational"
+    },
+    {
+      "id": "19",
+      "name": "Screw Assembly Robot SAR-1",
+      "location": "Building B - Line 9",
+      "department": "Assembly",
+      "model": "SAR-1",
+      "serialNumber": "SN3344556677",
+      "installDate": "2021-11-30",
+      "status": "Operational"
+    },
+    {
+      "id": "20",
+      "name": "Label Applicator LA-400",
+      "location": "Building C - Bay 8",
+      "department": "Packaging",
+      "model": "LA-400",
+      "serialNumber": "SN4455667788",
+      "installDate": "2018-02-15",
+      "status": "Down"
     }
   ],
   "maintenance": [

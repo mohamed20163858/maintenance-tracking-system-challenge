@@ -9,23 +9,26 @@ const EquipmentPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    const fetchEquipment = async () => {
-      try {
-        const response = await fetch("http://localhost:3001/equipment");
-        if (!response.ok) {
-          throw new Error("Failed to fetch equipment data");
-        }
-        const data = await response.json();
-        setEquipmentData(data);
-      } catch (err: any) {
-        setError(err.message || "An unexpected error occurred");
-      } finally {
-        setLoading(false);
+  const fetchEquipment = async () => {
+    try {
+      const response = await fetch("http://localhost:3001/equipment");
+      if (!response.ok) {
+        throw new Error("Failed to fetch equipment data");
       }
-    };
+      const data = await response.json();
+      setEquipmentData(data);
+    } catch (err: any) {
+      setError(err.message || "An unexpected error occurred");
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  useEffect(() => {
     fetchEquipment();
+    const interval = setInterval(fetchEquipment, 5000); // Poll every 5 seconds
+
+    return () => clearInterval(interval); // Cleanup on unmount
   }, []);
 
   if (loading) {
@@ -33,7 +36,20 @@ const EquipmentPage = () => {
   }
 
   if (error) {
-    return <p className="text-red-500">Error: {error}</p>;
+    return (
+      <div>
+        <p className="text-red-500">Error: {error}</p>
+        {equipmentData.length > 0 && (
+          <div className="p-4">
+            <p className="flex justify-center bg-red-100 text-red-500">
+              these are outdated data due to unreachability to the server
+            </p>
+            <h1 className="text-xl font-bold mb-4">Equipment List</h1>
+            <EquipmentTable data={equipmentData} />
+          </div>
+        )}
+      </div>
+    );
   }
 
   return (

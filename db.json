@@ -199,6 +199,36 @@
       "serialNumber": "SN4455667788",
       "installDate": "2018-02-15",
       "status": "Down"
+    },
+    {
+      "id": "8a08",
+      "name": "cnc",
+      "location": "egypt",
+      "department": "Machining",
+      "model": "12345",
+      "serialNumber": "sn12345",
+      "installDate": "2024-12-04T00:00:00.000Z",
+      "status": "Operational"
+    },
+    {
+      "id": "0507",
+      "name": "printer",
+      "location": "egypt",
+      "department": "Assembly",
+      "model": "12345",
+      "serialNumber": "12345678",
+      "installDate": "2024-12-04T00:00:00.000Z",
+      "status": "Operational"
+    },
+    {
+      "id": "fff0",
+      "name": "screen",
+      "location": "cairo",
+      "department": "Packaging",
+      "model": "mo123",
+      "serialNumber": "sn1234",
+      "installDate": "2024-12-04T00:00:00.000Z",
+      "status": "Maintenance"
     }
   ],
   "maintenance": [

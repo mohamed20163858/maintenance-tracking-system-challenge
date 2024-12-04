@@ -21,7 +21,12 @@ import Pagination from "./Pagination";
 declare module "@tanstack/react-table" {
   //allows us to define custom properties for our columns
   interface ColumnMeta<TData extends RowData, TValue> {
-    filterVariant?: "text" | "range" | "statusSelect" | "departmentSelect";
+    filterVariant?:
+      | "text"
+      | "range"
+      | "statusSelect"
+      | "departmentSelect"
+      | "view";
   }
 }
 const EquipmentTable: React.FC<{ data: Equipment[] }> = ({ data }) => {
@@ -90,6 +95,22 @@ const EquipmentTable: React.FC<{ data: Equipment[] }> = ({ data }) => {
             {info.getValue()}
           </span>
         ),
+      }),
+      columnHelper.accessor("id", {
+        header: "View",
+        meta: {
+          filterVariant: "view",
+        },
+        cell: (info) => (
+          <a
+            href={`/equipment/${info.getValue()}`}
+            className="text-blue-500 hover:text-blue-700"
+          >
+            View
+          </a>
+        ),
+        enableSorting: false,
+        // enableColumnFilter: false,
       }),
     ],
     [columnHelper]

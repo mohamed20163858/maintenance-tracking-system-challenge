@@ -11,9 +11,11 @@ export default function Filter({
 
   return filterVariant === "range" ? (
     <div>
-      <div className="flex space-x-2">
+      <div className="flex items-center space-x-2">
         {/* See faceted column filters example for startDate endDate values functionality */}
-        <label htmlFor="equipment-start-date">Start Date:- </label>
+        <label htmlFor="equipment-start-date" className="text-[14px]">
+          Start Date:-{" "}
+        </label>
         <DebouncedInput
           type="date"
           id="equipment-start-date"
@@ -24,7 +26,9 @@ export default function Filter({
           placeholder={`Start Date`}
           className="w-24 border shadow rounded"
         />
-        <label htmlFor="equipment-end-date">End Date:- </label>
+        <label htmlFor="equipment-end-date" className="text-[14px]">
+          End Date:-{" "}
+        </label>
         <DebouncedInput
           type="date"
           id="equipment-end-date"
@@ -64,6 +68,8 @@ export default function Filter({
       <option value="Packaging">Packaging</option>
       <option value="Shipping">Shipping</option>
     </select>
+  ) : filterVariant === "view" ? (
+    <br></br>
   ) : (
     <DebouncedInput
       className="w-36 border shadow rounded"

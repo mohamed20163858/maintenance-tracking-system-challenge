@@ -1,9 +1,11 @@
 "use client";
+import { useRouter } from "next/navigation";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { equipmentSchema, EquipmentFormValues } from "../types/equipmentSchema";
 
 const EquipmentForm: React.FC = () => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -13,9 +15,22 @@ const EquipmentForm: React.FC = () => {
     resolver: zodResolver(equipmentSchema),
   });
 
-  const onSubmit = (data: EquipmentFormValues) => {
-    console.log("Form Submitted:", data);
-    // will add logic to save data to a backend or state here
+  const onSubmit = async (data: EquipmentFormValues) => {
+    try {
+      const response = await fetch(`http://localhost:3001/equipment/`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+        // Redirect to /equipment after successful submission
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to save equipment data");
+      }
+      router.push("/equipment");
+    } catch (error) {
+      throw new Error("Failed to connect to the server");
+    }
   };
 
   return (

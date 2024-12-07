@@ -229,6 +229,16 @@
       "serialNumber": "sn1234",
       "installDate": "2024-12-04T00:00:00.000Z",
       "status": "Maintenance"
+    },
+    {
+      "id": "414e",
+      "name": "ardunio uno",
+      "location": "egypt",
+      "department": "Assembly",
+      "model": "123",
+      "serialNumber": "sn123",
+      "installDate": "2024-12-07T00:00:00.000Z",
+      "status": "Operational"
     }
   ],
   "maintenance": [

@@ -17,6 +17,7 @@ import {
 import { Equipment } from "../types/equipment"; // Assuming Equipment type is defined here
 import Filter from "./Filter";
 import Pagination from "./Pagination";
+import Link from "next/link";
 
 declare module "@tanstack/react-table" {
   //allows us to define custom properties for our columns
@@ -221,6 +222,12 @@ const EquipmentTable: React.FC<{ data: Equipment[] }> = ({ data }) => {
         >
           Apply Bulk Status Update
         </button>
+        <Link
+          href="/equipment/new"
+          className="ml-2 p-2 bg-green-500 text-white rounded"
+        >
+          Add New Equipment
+        </Link>
       </div>
     </div>
   );

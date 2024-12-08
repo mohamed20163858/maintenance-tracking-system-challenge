@@ -1,14 +1,14 @@
 {
   "equipment": [
     {
-      "id": "1",
       "name": "CNC Machine 1",
       "location": "Factory A",
       "department": "Machining",
       "model": "CNC-1000",
       "serialNumber": "SN123456",
-      "installDate": "2022-04-15",
-      "status": "Operational"
+      "installDate": "2024-12-08T00:00:00.000Z",
+      "status": "Operational",
+      "id": "1"
     },
     {
       "id": "2",
@@ -27,8 +27,8 @@
       "department": "Packaging",
       "model": "3DP-300X",
       "serialNumber": "SN456789",
-      "installDate": "2023-02-20",
-      "status": "Maintenance"
+      "installDate": "2023-02-11",
+      "status": "Operational"
     },
     {
       "id": "4",
@@ -231,13 +231,23 @@
       "status": "Maintenance"
     },
     {
-      "id": "414e",
       "name": "ardunio uno",
       "location": "egypt",
       "department": "Assembly",
       "model": "123",
       "serialNumber": "sn123",
-      "installDate": "2024-12-07T00:00:00.000Z",
+      "installDate": "2024-12-08T00:00:00.000Z",
+      "status": "Operational",
+      "id": "414e"
+    },
+    {
+      "id": "67c1",
+      "name": "ardunio mega",
+      "location": "italy",
+      "department": "Assembly",
+      "model": "12345",
+      "serialNumber": "SN123456",
+      "installDate": "2023-01-11T00:00:00.000Z",
       "status": "Operational"
     }
   ],

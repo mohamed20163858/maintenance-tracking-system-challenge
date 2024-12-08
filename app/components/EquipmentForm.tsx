@@ -1,37 +1,40 @@
 "use client";
-import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { equipmentSchema, EquipmentFormValues } from "../types/equipmentSchema";
 
-const EquipmentForm: React.FC = () => {
-  const router = useRouter();
+interface EquipmentFormProps {
+  existingEquipment?: EquipmentFormValues; // If we're editing, pass the existing data
+  onSubmit: (data: EquipmentFormValues) => void; // Handle submit for both new and edit
+}
+
+const EquipmentForm: React.FC<EquipmentFormProps> = ({
+  existingEquipment,
+  onSubmit,
+}) => {
   const {
     register,
     handleSubmit,
     control,
     formState: { errors },
+    setValue,
   } = useForm<EquipmentFormValues>({
     resolver: zodResolver(equipmentSchema),
+    defaultValues: existingEquipment || {}, // Set default values if editing
   });
 
-  const onSubmit = async (data: EquipmentFormValues) => {
-    try {
-      const response = await fetch(`http://localhost:3001/equipment/`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-        // Redirect to /equipment after successful submission
+  // Populate form fields with existing data when editing
+  useEffect(() => {
+    if (existingEquipment) {
+      Object.keys(existingEquipment).forEach((key) => {
+        setValue(
+          key as keyof EquipmentFormValues,
+          existingEquipment[key as keyof EquipmentFormValues]
+        );
       });
-
-      if (!response.ok) {
-        throw new Error("Failed to save equipment data");
-      }
-      router.push("/equipment");
-    } catch (error) {
-      throw new Error("Failed to connect to the server");
     }
-  };
+  }, [existingEquipment, setValue]);
 
   return (
     <form
@@ -163,23 +166,25 @@ const EquipmentForm: React.FC = () => {
         <Controller
           name="installDate"
           control={control}
-          render={({ field }) => (
-            <input
-              id="installDate"
-              type="date"
-              {...field}
-              value={
-                field.value instanceof Date
-                  ? field.value.toISOString().split("T")[0]
-                  : ""
-              }
-              onChange={(e) => field.onChange(new Date(e.target.value))}
-              className={`mt-1 block w-full border ${
-                errors.installDate ? "border-red-500" : "border-gray-300"
-              } rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500`}
-            />
-          )}
+          render={({ field }) => {
+            const formattedDate = field.value
+              ? new Date(field.value).toISOString().split("T")[0]
+              : "";
+            return (
+              <input
+                id="installDate"
+                type="date"
+                {...field}
+                value={formattedDate} // Ensure date format is YYYY-MM-DD
+                onChange={(e) => field.onChange(new Date(e.target.value))}
+                className={`mt-1 block w-full border ${
+                  errors.installDate ? "border-red-500" : "border-gray-300"
+                } rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500`}
+              />
+            );
+          }}
         />
+
         {errors.installDate && (
           <p className="mt-2 text-sm text-red-500">
             {errors.installDate.message}

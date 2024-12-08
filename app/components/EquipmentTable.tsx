@@ -21,6 +21,7 @@ import Link from "next/link";
 
 declare module "@tanstack/react-table" {
   //allows us to define custom properties for our columns
+  /* eslint-disable @typescript-eslint/no-unused-vars */
   interface ColumnMeta<TData extends RowData, TValue> {
     filterVariant?:
       | "text"
@@ -30,8 +31,9 @@ declare module "@tanstack/react-table" {
       | "view";
   }
 }
+/* eslint-enable @typescript-eslint/no-unused-vars */
 const EquipmentTable: React.FC<{ data: Equipment[] }> = ({ data }) => {
-  const [bulkStatus, setBulkStatus] = useState<
+  const [bulkStatus] = useState<
     "All" | "Operational" | "Down" | "Maintenance" | "Retired"
   >("All");
   const [sorting, setSorting] = useState<SortingState>([]);
@@ -43,7 +45,7 @@ const EquipmentTable: React.FC<{ data: Equipment[] }> = ({ data }) => {
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
   //custom sorting logic for one of our enum columns
-  const sortStatusFn: SortingFn<Equipment> = (rowA, rowB, _columnId) => {
+  const sortStatusFn: SortingFn<Equipment> = (rowA, rowB) => {
     const statusA = rowA.original.status;
     const statusB = rowB.original.status;
     const statusOrder = ["Operational", "Maintenance", "Down", "Retired"];

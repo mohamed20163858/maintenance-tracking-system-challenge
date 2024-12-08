@@ -35,6 +35,15 @@ const EquipmentForm: React.FC<EquipmentFormProps> = ({
       });
     }
   }, [existingEquipment, setValue]);
+  useEffect(() => {
+    if (
+      existingEquipment &&
+      existingEquipment.installDate &&
+      typeof existingEquipment.installDate === "string"
+    ) {
+      setValue("installDate", new Date(existingEquipment.installDate)); // Convert to Date
+    }
+  }, [existingEquipment, setValue]);
 
   return (
     <form
@@ -170,6 +179,8 @@ const EquipmentForm: React.FC<EquipmentFormProps> = ({
             const formattedDate = field.value
               ? new Date(field.value).toISOString().split("T")[0]
               : "";
+            // console.log("Controller field value:", typeof field.value);
+
             return (
               <input
                 id="installDate"

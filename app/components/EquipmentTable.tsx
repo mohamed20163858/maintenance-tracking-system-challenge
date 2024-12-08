@@ -33,12 +33,15 @@ declare module "@tanstack/react-table" {
 }
 /* eslint-enable @typescript-eslint/no-unused-vars */
 const EquipmentTable: React.FC<{ data: Equipment[] }> = ({ data }) => {
-  const [bulkStatus] = useState<
-    "All" | "Operational" | "Down" | "Maintenance" | "Retired"
-  >("All");
+  // const [bulkStatus] = useState<
+  //   "All" | "Operational" | "Down" | "Maintenance" | "Retired"
+  // >("All");
   const [sorting, setSorting] = useState<SortingState>([]);
   //   const rerender = useReducer(() => ({}), {})[1]
 
+  const [statusChanges, setStatusChanges] = useState<Record<string, string>>(
+    {}
+  );
   // Column helper for creating columns
   const columnHelper = createColumnHelper<Equipment>();
 
@@ -93,11 +96,27 @@ const EquipmentTable: React.FC<{ data: Equipment[] }> = ({ data }) => {
         meta: {
           filterVariant: "statusSelect",
         },
-        cell: (info) => (
-          <span className={`status ${info.getValue().toLowerCase()}`}>
-            {info.getValue()}
-          </span>
-        ),
+        cell: (info) => {
+          const id = info.row.original.id; // Unique row identifier
+          const currentStatus = statusChanges[id] ?? info.getValue();
+          return (
+            <select
+              value={currentStatus}
+              onChange={(e) =>
+                setStatusChanges((prev) => ({
+                  ...prev,
+                  [id]: e.target.value,
+                }))
+              }
+              className="border rounded px-2 py-1"
+            >
+              <option value="Operational">Operational</option>
+              <option value="Down">Down</option>
+              <option value="Maintenance">Maintenance</option>
+              <option value="Retired">Retired</option>
+            </select>
+          );
+        },
       }),
       columnHelper.accessor("id", {
         header: "View",
@@ -116,7 +135,7 @@ const EquipmentTable: React.FC<{ data: Equipment[] }> = ({ data }) => {
         // enableColumnFilter: false,
       }),
     ],
-    [columnHelper]
+    [columnHelper, statusChanges]
   );
 
   // Initialize the table with createTable and useReactTable
@@ -136,8 +155,31 @@ const EquipmentTable: React.FC<{ data: Equipment[] }> = ({ data }) => {
     onColumnFiltersChange: setColumnFilters,
   });
   // Function to apply bulk status update
-  const applyBulkStatusUpdate = () => {
-    console.log("Bulk updating selected rows to:", bulkStatus);
+  // const applyBulkStatusUpdate = () => {
+  //   console.log("Bulk updating selected rows to:", bulkStatus);
+  // };
+  const applyBulkStatusUpdate = async () => {
+    try {
+      const updatePromises = Object.entries(statusChanges).map(([id, status]) =>
+        fetch(`http://localhost:3001/equipment/${id}`, {
+          method: "PATCH", // or PUT
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ status }),
+        })
+      );
+
+      await Promise.all(updatePromises);
+
+      alert("Statuses updated successfully!");
+      window.location.href = "/equipment";
+
+      setStatusChanges({}); // Clear local changes after successful update
+    } catch (error) {
+      console.error(error);
+      alert("Failed to update statuses. Please try again.");
+    }
   };
 
   return (

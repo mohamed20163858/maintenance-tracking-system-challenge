@@ -37,9 +37,10 @@ const EquipmentPage = () => {
 
   useEffect(() => {
     fetchEquipment();
-    const interval = setInterval(fetchEquipment, 5000); // Poll every 5 seconds
+    // will implement in the future
+    // const interval = setInterval(fetchEquipment, 5000); // Poll every 5 seconds
 
-    return () => clearInterval(interval); // Cleanup on unmount
+    // return () => clearInterval(interval); // Cleanup on unmount
   }, []);
 
   if (loading) {

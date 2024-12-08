@@ -6,7 +6,7 @@
       "department": "Machining",
       "model": "CNC-1000",
       "serialNumber": "SN123456",
-      "installDate": "2024-12-08T00:00:00.000Z",
+      "installDate": "2024-12-07T00:00:00.000Z",
       "status": "Operational",
       "id": "1"
     },
@@ -18,7 +18,7 @@
       "model": "LaserPro-200",
       "serialNumber": "SN789012",
       "installDate": "2021-09-10",
-      "status": "Down"
+      "status": "Operational"
     },
     {
       "id": "3",
@@ -48,7 +48,7 @@
       "model": "WR-450",
       "serialNumber": "SN741258",
       "installDate": "2019-06-25",
-      "status": "Retired"
+      "status": "Down"
     },
     {
       "id": "6",
@@ -58,7 +58,7 @@
       "model": "LT-3000",
       "serialNumber": "SN1234567890",
       "installDate": "2021-03-15",
-      "status": "Operational"
+      "status": "Down"
     },
     {
       "id": "7",
@@ -68,7 +68,7 @@
       "model": "XR1-2021",
       "serialNumber": "SN0987654321",
       "installDate": "2022-07-10",
-      "status": "Maintenance"
+      "status": "Down"
     },
     {
       "id": "8",
@@ -78,7 +78,7 @@
       "model": "CV-500",
       "serialNumber": "SN2233445566",
       "installDate": "2019-06-22",
-      "status": "Operational"
+      "status": "Down"
     },
     {
       "id": "9",
@@ -88,17 +88,17 @@
       "model": "SS-Pro",
       "serialNumber": "SN3344556677",
       "installDate": "2020-11-13",
-      "status": "Down"
+      "status": "Maintenance"
     },
     {
-      "id": "10",
       "name": "CNC Milling Machine 900",
       "location": "Building A - Floor 2",
       "department": "Machining",
       "model": "MM-900",
       "serialNumber": "SN4455667788",
-      "installDate": "2018-05-19",
-      "status": "Retired"
+      "installDate": "2018-05-19T00:00:00.000Z",
+      "status": "Down",
+      "id": "10"
     },
     {
       "id": "11",
@@ -108,7 +108,7 @@
       "model": "AS100-2019",
       "serialNumber": "SN5566778899",
       "installDate": "2019-12-01",
-      "status": "Operational"
+      "status": "Down"
     },
     {
       "id": "12",
@@ -128,7 +128,7 @@
       "model": "DL-Elite",
       "serialNumber": "SN7788990011",
       "installDate": "2023-01-08",
-      "status": "Maintenance"
+      "status": "Operational"
     },
     {
       "id": "14",
@@ -138,7 +138,7 @@
       "model": "PT-500",
       "serialNumber": "SN8899001122",
       "installDate": "2020-04-23",
-      "status": "Operational"
+      "status": "Down"
     },
     {
       "id": "15",
@@ -228,7 +228,7 @@
       "model": "mo123",
       "serialNumber": "sn1234",
       "installDate": "2024-12-04T00:00:00.000Z",
-      "status": "Maintenance"
+      "status": "Operational"
     },
     {
       "name": "ardunio uno",
@@ -248,7 +248,27 @@
       "model": "12345",
       "serialNumber": "SN123456",
       "installDate": "2023-01-11T00:00:00.000Z",
-      "status": "Operational"
+      "status": "Down"
+    },
+    {
+      "name": "printer",
+      "location": "egypt",
+      "department": "Machining",
+      "model": "12345",
+      "serialNumber": "123456",
+      "installDate": "2024-12-06T00:00:00.000Z",
+      "status": "Down",
+      "id": "b9cb"
+    },
+    {
+      "name": "momo printer",
+      "location": "egypt",
+      "department": "Assembly",
+      "model": "123456",
+      "serialNumber": "sn1234",
+      "installDate": "2024-12-05T00:00:00.000Z",
+      "status": "Operational",
+      "id": "c8eb"
     }
   ],
   "maintenance": [

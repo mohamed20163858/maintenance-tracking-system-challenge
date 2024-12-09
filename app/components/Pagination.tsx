@@ -1,8 +1,9 @@
 import { Table } from "@tanstack/react-table"; // Import the Table type
 import { Equipment } from "../types/equipment"; // Assuming Equipment is your data type
+import { MaintenanceRecord } from "../types/maintenance";
 
 interface PaginationProps {
-  table: Table<Equipment>; // Specify the type of the table prop
+  table: Table<Equipment> | Table<MaintenanceRecord>; // Specify the type of the table prop
 }
 function Pagination({ table }: PaginationProps) {
   return (

@@ -9,29 +9,15 @@ import {
   createColumnHelper,
   SortingFn,
   SortingState,
-  RowData,
   ColumnFiltersState,
   getFilteredRowModel,
   getPaginationRowModel,
 } from "@tanstack/react-table";
 import { Equipment } from "../types/equipment"; // Assuming Equipment type is defined here
-import Filter from "./Filter";
+import EquipmentFilter from "./EquipmentFilter";
 import Pagination from "./Pagination";
 import Link from "next/link";
 
-declare module "@tanstack/react-table" {
-  //allows us to define custom properties for our columns
-  /* eslint-disable @typescript-eslint/no-unused-vars */
-  interface ColumnMeta<TData extends RowData, TValue> {
-    filterVariant?:
-      | "text"
-      | "range"
-      | "statusSelect"
-      | "departmentSelect"
-      | "view";
-  }
-}
-/* eslint-enable @typescript-eslint/no-unused-vars */
 const EquipmentTable: React.FC<{ data: Equipment[] }> = ({ data }) => {
   // const [bulkStatus] = useState<
   //   "All" | "Operational" | "Down" | "Maintenance" | "Retired"
@@ -222,7 +208,7 @@ const EquipmentTable: React.FC<{ data: Equipment[] }> = ({ data }) => {
                   </div>
                   {header.column.getCanFilter() ? (
                     <div>
-                      <Filter column={header.column} />
+                      <EquipmentFilter column={header.column} />
                     </div>
                   ) : null}
                 </th>

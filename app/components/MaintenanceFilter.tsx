@@ -1,10 +1,10 @@
 import DebouncedInput from "./DebouncedInput";
 import { Column } from "@tanstack/react-table";
-import { Equipment } from "../types/equipment"; // Assuming Equipment type is defined here
-export default function Filter({
+import { MaintenanceRecord } from "../types/maintenance";
+export default function MaintenanceFilter({
   column,
 }: {
-  column: Column<Equipment, unknown>;
+  column: Column<MaintenanceRecord, unknown>;
 }) {
   const columnFilterValue = column.getFilterValue();
   const { filterVariant } = column.columnDef.meta ?? {};
@@ -42,20 +42,44 @@ export default function Filter({
       </div>
       <div className="h-1" />
     </div>
-  ) : filterVariant === "statusSelect" ? (
+  ) : filterVariant === "numberRange" ? (
+    <div>
+      <div className="flex space-x-2">
+        {/* See faceted column filters example for min max values functionality */}
+        <DebouncedInput
+          type="number"
+          value={(columnFilterValue as [number, number])?.[0] ?? ""}
+          onChange={(value) =>
+            column.setFilterValue((old: [number, number]) => [value, old?.[1]])
+          }
+          placeholder={`Min`}
+          className="w-24 border shadow rounded"
+        />
+        <DebouncedInput
+          type="number"
+          value={(columnFilterValue as [number, number])?.[1] ?? ""}
+          onChange={(value) =>
+            column.setFilterValue((old: [number, number]) => [old?.[0], value])
+          }
+          placeholder={`Max`}
+          className="w-24 border shadow rounded"
+        />
+      </div>
+      <div className="h-1" />
+    </div>
+  ) : filterVariant === "typeSelect" ? (
     <select
       onChange={(e) => column.setFilterValue(e.target.value)}
       value={columnFilterValue?.toString()}
-      id="statusSelect"
+      id="typeSelect"
     >
       {/* See faceted column filters example for dynamic select options */}
       <option value="">All</option>
-      <option value="Operational">Operational</option>
-      <option value="Maintenance">Maintenance</option>
-      <option value="Down">Down</option>
-      <option value="Retired">Retired</option>
+      <option value="Preventive">Preventive</option>
+      <option value="Repair">Repair</option>
+      <option value="Emergency">Emergency</option>
     </select>
-  ) : filterVariant === "departmentSelect" ? (
+  ) : filterVariant === "prioritySelect" ? (
     <select
       onChange={(e) => column.setFilterValue(e.target.value)}
       value={columnFilterValue?.toString()}
@@ -63,10 +87,21 @@ export default function Filter({
     >
       {/* See faceted column filters example for dynamic select options */}
       <option value="">All</option>
-      <option value="Machining">Machining</option>
-      <option value="Assembly">Assembly</option>
-      <option value="Packaging">Packaging</option>
-      <option value="Shipping">Shipping</option>
+      <option value="Low">Low</option>
+      <option value="Medium">Medium</option>
+      <option value="High">High</option>
+    </select>
+  ) : filterVariant === "completionStatusSelect" ? (
+    <select
+      onChange={(e) => column.setFilterValue(e.target.value)}
+      value={columnFilterValue?.toString()}
+      id="completionStatusSelect"
+    >
+      {/* See faceted column filters example for dynamic select options */}
+      <option value="">All</option>
+      <option value="Complete">Complete</option>
+      <option value="Incomplete">Incomplete</option>
+      <option value="Pending Parts">Pending Parts</option>
     </select>
   ) : filterVariant === "view" ? (
     <br></br>

@@ -252,7 +252,11 @@ const MaintenanceForm: React.FC<MaintenanceFormProps> = ({
         <input
           id="partsReplaced"
           type="text"
-          {...register("partsReplaced")}
+          placeholder="Enter parts separated by commas"
+          onChange={(e) => {
+            const value = e.target.value.split(",").map((part) => part.trim());
+            setValue("partsReplaced", value); // Update the field with an array
+          }}
           className={`mt-1 block w-full border ${
             errors.partsReplaced ? "border-red-500" : "border-gray-300"
           } rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500`}

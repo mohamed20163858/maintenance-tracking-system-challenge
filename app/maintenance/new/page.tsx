@@ -6,7 +6,7 @@ import MaintenanceForm from "../../components/MaintenanceRecordForm";
 
 const MaintenanceFormPage = () => {
   const handleCreate = async (data: MaintenanceRecordFormValues) => {
-    console.log("Form submitted with data:", data); // Log the form data
+    // console.log("Form submitted with data:", data); // Log the form data
 
     try {
       const response = await fetch("http://localhost:3001/maintenance", {
@@ -21,9 +21,9 @@ const MaintenanceFormPage = () => {
 
       // Redirect or notify user of success
       alert("Record created successfully");
-      //   window.location.href = "/equipment";
-    } catch (error) {
-      console.error("Error during form submission:", error); // Log errors
+      window.location.href = "/maintenance";
+    } catch {
+      //   console.error("Error during form submission:", error); // Log errors
       alert("Failed to create new maintenance record");
     }
   };

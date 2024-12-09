@@ -281,5 +281,32 @@
       "id": "b5f1"
     }
   ],
-  "maintenance": []
+  "maintenance": [
+    {
+      "id": "b929",
+      "equipmentId": "2",
+      "date": "2024-12-09T00:00:00.000Z",
+      "type": "Preventive",
+      "technician": "mohamed saleh",
+      "hoursSpent": 3,
+      "description": "jndnodvndsvp",
+      "priority": "Low",
+      "completionStatus": "Pending Parts"
+    },
+    {
+      "id": "6781",
+      "equipmentId": "1",
+      "date": "2024-12-09T00:00:00.000Z",
+      "type": "Preventive",
+      "technician": "mohamed saleh",
+      "hoursSpent": 8,
+      "description": "how come ?",
+      "partsReplaced": [
+        "part1",
+        "part2"
+      ],
+      "priority": "Low",
+      "completionStatus": "Complete"
+    }
+  ]
 }

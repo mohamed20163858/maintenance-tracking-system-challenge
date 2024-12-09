@@ -108,7 +108,7 @@
       "model": "AS100-2019",
       "serialNumber": "SN5566778899",
       "installDate": "2019-12-01",
-      "status": "Down"
+      "status": "Operational"
     },
     {
       "id": "12",
@@ -138,7 +138,7 @@
       "model": "PT-500",
       "serialNumber": "SN8899001122",
       "installDate": "2020-04-23",
-      "status": "Down"
+      "status": "Operational"
     },
     {
       "id": "15",
@@ -248,7 +248,7 @@
       "model": "12345",
       "serialNumber": "SN123456",
       "installDate": "2023-01-11T00:00:00.000Z",
-      "status": "Down"
+      "status": "Operational"
     },
     {
       "name": "printer",
@@ -257,7 +257,7 @@
       "model": "12345",
       "serialNumber": "123456",
       "installDate": "2024-12-06T00:00:00.000Z",
-      "status": "Down",
+      "status": "Operational",
       "id": "b9cb"
     },
     {
@@ -269,48 +269,17 @@
       "installDate": "2024-12-05T00:00:00.000Z",
       "status": "Operational",
       "id": "c8eb"
+    },
+    {
+      "name": "fatma printer",
+      "location": "damnhour",
+      "department": "Machining",
+      "model": "1123gt5",
+      "serialNumber": "sn123456",
+      "installDate": "2024-12-08T00:00:00.000Z",
+      "status": "Operational",
+      "id": "b5f1"
     }
   ],
-  "maintenance": [
-    {
-      "id": "1",
-      "equipmentId": "2",
-      "description": "Replaced laser lens and recalibrated optics.",
-      "technician": "John Doe",
-      "date": "2023-03-12",
-      "cost": 750
-    },
-    {
-      "id": "2",
-      "equipmentId": "3",
-      "description": "Replaced worn-out extruder parts.",
-      "technician": "Jane Smith",
-      "date": "2023-07-08",
-      "cost": 120
-    },
-    {
-      "id": "3",
-      "equipmentId": "3",
-      "description": "Firmware update and calibration.",
-      "technician": "Mike Brown",
-      "date": "2023-10-22",
-      "cost": 50
-    },
-    {
-      "id": "4",
-      "equipmentId": "4",
-      "description": "Hydraulic system oil replacement.",
-      "technician": "Alice Johnson",
-      "date": "2022-05-15",
-      "cost": 400
-    },
-    {
-      "id": "5",
-      "equipmentId": "1",
-      "description": "Routine maintenance check.",
-      "technician": "Bob Green",
-      "date": "2023-01-18",
-      "cost": 300
-    }
-  ]
+  "maintenance": []
 }

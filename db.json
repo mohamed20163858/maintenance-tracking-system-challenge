@@ -283,30 +283,393 @@
   ],
   "maintenance": [
     {
-      "id": "b929",
-      "equipmentId": "2",
-      "date": "2024-12-09T00:00:00.000Z",
+      "id": "MR001",
+      "equipmentId": "1",
+      "date": "2024-12-01T08:00:00.000Z",
       "type": "Preventive",
-      "technician": "mohamed saleh",
+      "technician": "John Doe",
       "hoursSpent": 3,
-      "description": "jndnodvndsvp",
+      "description": "Routine maintenance of CNC Machine 1.",
+      "priority": "Medium",
+      "completionStatus": "Complete"
+    },
+    {
+      "id": "MR002",
+      "equipmentId": "2",
+      "date": "2024-12-03T10:30:00.000Z",
+      "type": "Repair",
+      "technician": "Jane Smith",
+      "hoursSpent": 5,
+      "description": "Replaced faulty laser module.",
+      "partsReplaced": [
+        "Laser Module"
+      ],
+      "priority": "High",
+      "completionStatus": "Complete"
+    },
+    {
+      "id": "MR003",
+      "equipmentId": "3",
+      "date": "2024-12-05T14:00:00.000Z",
+      "type": "Preventive",
+      "technician": "Ali Hassan",
+      "hoursSpent": 2,
+      "description": "Checked calibration and cleaned 3D printer.",
       "priority": "Low",
+      "completionStatus": "Complete"
+    },
+    {
+      "id": "MR004",
+      "equipmentId": "4",
+      "date": "2024-12-06T09:00:00.000Z",
+      "type": "Emergency",
+      "technician": "Maria Lopez",
+      "hoursSpent": 6,
+      "description": "Hydraulic Press malfunction during operation.",
+      "partsReplaced": [
+        "Hydraulic Hose"
+      ],
+      "priority": "High",
+      "completionStatus": "Complete"
+    },
+    {
+      "id": "MR005",
+      "equipmentId": "5",
+      "date": "2024-12-07T15:00:00.000Z",
+      "type": "Repair",
+      "technician": "Omar Khalid",
+      "hoursSpent": 4,
+      "description": "Welding Robot not responding. Replaced control unit.",
+      "partsReplaced": [
+        "Control Unit"
+      ],
+      "priority": "High",
+      "completionStatus": "Incomplete"
+    },
+    {
+      "id": "MR006",
+      "equipmentId": "6",
+      "date": "2024-12-09T11:00:00.000Z",
+      "type": "Preventive",
+      "technician": "Sophia Lee",
+      "hoursSpent": 3,
+      "description": "Routine lubrication and inspection.",
+      "priority": "Medium",
+      "completionStatus": "Complete"
+    },
+    {
+      "id": "MR007",
+      "equipmentId": "7",
+      "date": "2024-12-10T10:00:00.000Z",
+      "type": "Repair",
+      "technician": "Robert King",
+      "hoursSpent": 7,
+      "description": "Assembly Robot XR1 arm replacement.",
+      "partsReplaced": [
+        "Robot Arm"
+      ],
+      "priority": "High",
       "completionStatus": "Pending Parts"
     },
     {
-      "id": "6781",
-      "equipmentId": "1",
-      "date": "2024-12-09T00:00:00.000Z",
-      "type": "Preventive",
-      "technician": "mohamed saleh",
+      "id": "MR008",
+      "equipmentId": "8",
+      "date": "2024-12-11T12:30:00.000Z",
+      "type": "Emergency",
+      "technician": "Aisha Malik",
       "hoursSpent": 8,
-      "description": "how come ?",
+      "description": "Packaging Conveyor 500 motor failure.",
       "partsReplaced": [
-        "part1",
-        "part2"
+        "Conveyor Motor"
       ],
+      "priority": "High",
+      "completionStatus": "Complete"
+    },
+    {
+      "id": "MR009",
+      "equipmentId": "9",
+      "date": "2024-12-12T08:00:00.000Z",
+      "type": "Repair",
+      "technician": "Carlos Vega",
+      "hoursSpent": 3,
+      "description": "Shipping Scale Pro calibration error fixed.",
+      "priority": "Medium",
+      "completionStatus": "Complete"
+    },
+    {
+      "id": "MR010",
+      "equipmentId": "10",
+      "date": "2024-12-13T09:00:00.000Z",
+      "type": "Preventive",
+      "technician": "John Doe",
+      "hoursSpent": 4,
+      "description": "CNC Milling Machine 900 cleaned and aligned.",
       "priority": "Low",
       "completionStatus": "Complete"
+    },
+    {
+      "id": "MR011",
+      "equipmentId": "11",
+      "date": "2024-12-14T10:00:00.000Z",
+      "type": "Repair",
+      "technician": "Jane Smith",
+      "hoursSpent": 5,
+      "description": "Robotic Arm AS100 joint repair.",
+      "partsReplaced": [
+        "Joint Mechanism"
+      ],
+      "priority": "High",
+      "completionStatus": "Complete"
+    },
+    {
+      "id": "MR012",
+      "equipmentId": "12",
+      "date": "2024-12-15T14:00:00.000Z",
+      "type": "Preventive",
+      "technician": "Ali Hassan",
+      "hoursSpent": 2,
+      "description": "Shrink Wrap System 300 inspection and lubrication.",
+      "priority": "Medium",
+      "completionStatus": "Complete"
+    },
+    {
+      "id": "MR013",
+      "equipmentId": "13",
+      "date": "2024-12-16T09:00:00.000Z",
+      "type": "Repair",
+      "technician": "Maria Lopez",
+      "hoursSpent": 6,
+      "description": "Dock Loader Elite hydraulics replaced.",
+      "partsReplaced": [
+        "Hydraulic Pump"
+      ],
+      "priority": "High",
+      "completionStatus": "Complete"
+    },
+    {
+      "id": "MR014",
+      "equipmentId": "14",
+      "date": "2024-12-17T15:00:00.000Z",
+      "type": "Preventive",
+      "technician": "Omar Khalid",
+      "hoursSpent": 3,
+      "description": "Precision Lathe PT500 maintenance check.",
+      "priority": "Low",
+      "completionStatus": "Complete"
+    },
+    {
+      "id": "MR015",
+      "equipmentId": "15",
+      "date": "2024-12-18T11:00:00.000Z",
+      "type": "Repair",
+      "technician": "Sophia Lee",
+      "hoursSpent": 7,
+      "description": "Welding Robot WR-300 circuit board replaced.",
+      "partsReplaced": [
+        "Circuit Board"
+      ],
+      "priority": "High",
+      "completionStatus": "Pending Parts"
+    },
+    {
+      "id": "MR016",
+      "equipmentId": "16",
+      "date": "2024-12-19T10:00:00.000Z",
+      "type": "Preventive",
+      "technician": "Robert King",
+      "hoursSpent": 2,
+      "description": "Palletizer PR2000 lubrication and inspection.",
+      "priority": "Low",
+      "completionStatus": "Complete"
+    },
+    {
+      "id": "MR017",
+      "equipmentId": "17",
+      "date": "2024-12-20T10:00:00.000Z",
+      "type": "Emergency",
+      "technician": "Aisha Malik",
+      "hoursSpent": 5,
+      "description": "Forklift FLX-Pro engine failure.",
+      "partsReplaced": [
+        "Engine"
+      ],
+      "priority": "High",
+      "completionStatus": "Complete"
+    },
+    {
+      "id": "MR018",
+      "equipmentId": "18",
+      "date": "2024-12-21T10:00:00.000Z",
+      "type": "Preventive",
+      "technician": "Carlos Vega",
+      "hoursSpent": 3,
+      "description": "Grinding Machine GM-700 blade sharpening.",
+      "priority": "Medium",
+      "completionStatus": "Complete"
+    },
+    {
+      "id": "MR019",
+      "equipmentId": "19",
+      "date": "2024-12-22T14:00:00.000Z",
+      "type": "Repair",
+      "technician": "Jane Smith",
+      "hoursSpent": 4,
+      "description": "Screw Assembly Robot SAR-1 sensor replacement.",
+      "partsReplaced": [
+        "Sensor"
+      ],
+      "priority": "High",
+      "completionStatus": "Complete"
+    },
+    {
+      "id": "MR020",
+      "equipmentId": "20",
+      "date": "2024-12-23T10:00:00.000Z",
+      "type": "Preventive",
+      "technician": "John Doe",
+      "hoursSpent": 2,
+      "description": "Label Applicator LA-400 inspection.",
+      "priority": "Low",
+      "completionStatus": "Complete"
+    },
+    {
+      "id": "MR001",
+      "equipmentId": "1",
+      "date": "2024-12-08T08:30:00.000Z",
+      "type": "Preventive",
+      "technician": "John Doe",
+      "hoursSpent": 4,
+      "description": "Quarterly maintenance and lubrication of CNC Machine 1.",
+      "partsReplaced": [
+        "Lubricant Filter"
+      ],
+      "priority": "Medium",
+      "completionStatus": "Complete"
+    },
+    {
+      "id": "MR002",
+      "equipmentId": "1",
+      "date": "2024-12-12T11:00:00.000Z",
+      "type": "Repair",
+      "technician": "Jane Smith",
+      "hoursSpent": 3,
+      "description": "Replaced broken coolant pump.",
+      "partsReplaced": [
+        "Coolant Pump"
+      ],
+      "priority": "High",
+      "completionStatus": "Complete"
+    },
+    {
+      "id": "MR003",
+      "equipmentId": "2",
+      "date": "2024-12-10T09:00:00.000Z",
+      "type": "Preventive",
+      "technician": "Alex Johnson",
+      "hoursSpent": 2,
+      "description": "Laser Cutter optics cleaned and recalibrated.",
+      "priority": "Low",
+      "completionStatus": "Complete"
+    },
+    {
+      "id": "MR004",
+      "equipmentId": "2",
+      "date": "2024-12-15T14:00:00.000Z",
+      "type": "Repair",
+      "technician": "Emma Brown",
+      "hoursSpent": 5,
+      "description": "Replaced damaged laser tube.",
+      "partsReplaced": [
+        "Laser Tube"
+      ],
+      "priority": "High",
+      "completionStatus": "Complete"
+    },
+    {
+      "id": "MR005",
+      "equipmentId": "3",
+      "date": "2024-12-09T10:15:00.000Z",
+      "type": "Preventive",
+      "technician": "Chris Green",
+      "hoursSpent": 1.5,
+      "description": "Checked filament feed and performed nozzle cleaning.",
+      "priority": "Medium",
+      "completionStatus": "Complete"
+    },
+    {
+      "id": "MR006",
+      "equipmentId": "3",
+      "date": "2024-12-13T12:30:00.000Z",
+      "type": "Emergency",
+      "technician": "Diana Lee",
+      "hoursSpent": 6,
+      "description": "Replaced extruder motor after failure.",
+      "partsReplaced": [
+        "Extruder Motor"
+      ],
+      "priority": "High",
+      "completionStatus": "Complete"
+    },
+    {
+      "id": "MR007",
+      "equipmentId": "4",
+      "date": "2024-12-07T15:00:00.000Z",
+      "type": "Repair",
+      "technician": "Michael Carter",
+      "hoursSpent": 4,
+      "description": "Fixed hydraulic system leaks.",
+      "partsReplaced": [
+        "Hydraulic Seals"
+      ],
+      "priority": "Medium",
+      "completionStatus": "Complete"
+    },
+    {
+      "id": "MR008",
+      "equipmentId": "4",
+      "date": "2024-12-16T10:00:00.000Z",
+      "type": "Preventive",
+      "technician": "Sarah Adams",
+      "hoursSpent": 3,
+      "description": "Hydraulic Press maintenance check and lubrication.",
+      "priority": "Low",
+      "completionStatus": "Complete"
+    },
+    {
+      "id": "MR009",
+      "equipmentId": "5",
+      "date": "2024-12-14T09:30:00.000Z",
+      "type": "Repair",
+      "technician": "Oliver White",
+      "hoursSpent": 8,
+      "description": "Repaired Welding Robot's broken arm actuator.",
+      "partsReplaced": [
+        "Actuator"
+      ],
+      "priority": "High",
+      "completionStatus": "Pending Parts"
+    },
+    {
+      "id": "MR010",
+      "equipmentId": "5",
+      "date": "2024-12-20T13:45:00.000Z",
+      "type": "Emergency",
+      "technician": "Ethan Martin",
+      "hoursSpent": 7,
+      "description": "Electrical short circuit fixed.",
+      "priority": "High",
+      "completionStatus": "Incomplete"
+    },
+    {
+      "id": "b3a4",
+      "equipmentId": "5",
+      "date": "2024-12-10T00:00:00.000Z",
+      "type": "Emergency",
+      "technician": "mohamed saleh",
+      "hoursSpent": 8,
+      "description": "bbovbkdvdkd",
+      "priority": "Medium",
+      "completionStatus": "Incomplete"
     }
   ]
 }

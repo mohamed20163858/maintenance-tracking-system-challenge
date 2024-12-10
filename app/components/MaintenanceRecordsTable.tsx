@@ -1,11 +1,13 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, Fragment } from "react";
 import {
   useReactTable,
+  GroupingState,
   flexRender,
   getCoreRowModel,
   getSortedRowModel,
+  getGroupedRowModel,
   createColumnHelper,
   SortingFn,
   SortingState,
@@ -23,12 +25,11 @@ const MaintenanceTable: React.FC<{
   equipmentMap: Record<string, string>;
 }> = ({ data, equipmentMap }) => {
   const [sorting, setSorting] = useState<SortingState>([]);
-  const [statusChanges, setStatusChanges] = useState<Record<string, string>>(
-    {}
-  );
+
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
   const columnHelper = createColumnHelper<MaintenanceRecord>();
+  const [grouping, setGrouping] = useState<GroupingState>(["equipmentId"]);
 
   const sortPriorityFn: SortingFn<MaintenanceRecord> = (rowA, rowB) => {
     const priorityA = rowA.original.priority;
@@ -53,12 +54,12 @@ const MaintenanceTable: React.FC<{
       completionStatusOrder.indexOf(completionStatusB)
     );
   };
-
   const columns = useMemo(
     () => [
       columnHelper.accessor("equipmentId", {
         header: "Equipment Name",
         cell: (info) => equipmentMap[info.getValue()] || "Unknown",
+        enableGrouping: true, // Allow grouping by this column
         filterFn: (row, columnId, filterValue) => {
           const equipmentId = row.getValue(columnId) as string; // Cast to string
           const equipmentName = equipmentMap[equipmentId];
@@ -141,6 +142,7 @@ const MaintenanceTable: React.FC<{
     state: {
       sorting,
       columnFilters,
+      grouping,
     },
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
@@ -148,31 +150,9 @@ const MaintenanceTable: React.FC<{
     getFilteredRowModel: getFilteredRowModel(),
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
+    getGroupedRowModel: getGroupedRowModel(),
+    onGroupingChange: setGrouping,
   });
-
-  const applyBulkStatusUpdate = async () => {
-    try {
-      const updatePromises = Object.entries(statusChanges).map(([id, status]) =>
-        fetch(`http://localhost:3001/maintenance/${id}`, {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ completionStatus: status }),
-        })
-      );
-
-      await Promise.all(updatePromises);
-
-      alert("Statuses updated successfully!");
-      window.location.href = "/maintenance";
-
-      setStatusChanges({});
-    } catch (error) {
-      console.error(error);
-      alert("Failed to update statuses. Please try again.");
-    }
-  };
 
   return (
     <div>
@@ -180,43 +160,52 @@ const MaintenanceTable: React.FC<{
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
-              {headerGroup.headers.map((header) => (
-                <th key={header.id} className="px-4 py-2 border-b text-left">
-                  <div
-                    className={
-                      header.column.getCanSort()
-                        ? "cursor-pointer select-none"
-                        : ""
-                    }
-                    onClick={header.column.getToggleSortingHandler()}
-                    title={
-                      header.column.getCanSort()
-                        ? header.column.getNextSortingOrder() === "asc"
-                          ? "Sort ascending"
-                          : header.column.getNextSortingOrder() === "desc"
-                          ? "Sort descending"
-                          : "Clear sort"
-                        : undefined
-                    }
-                  >
-                    {flexRender(
-                      header.column.columnDef.header,
-                      header.getContext()
+              {headerGroup.headers.map((header) => {
+                // Check if the column is the "equipmentId" column
+                const isEquipmentColumn = header.id === "equipmentId";
+
+                // Only render the Equipment Name header if grouping is not applied
+                if (isEquipmentColumn && grouping.length > 0) {
+                  return null; // Skip rendering if it's the equipment column and grouping is applied
+                }
+                return (
+                  <th key={header.id} className="px-4 py-2 border-b text-left">
+                    <div
+                      className={
+                        header.column.getCanSort()
+                          ? "cursor-pointer select-none"
+                          : ""
+                      }
+                      onClick={header.column.getToggleSortingHandler()}
+                      title={
+                        header.column.getCanSort()
+                          ? header.column.getNextSortingOrder() === "asc"
+                            ? "Sort ascending"
+                            : header.column.getNextSortingOrder() === "desc"
+                            ? "Sort descending"
+                            : "Clear sort"
+                          : undefined
+                      }
+                    >
+                      {flexRender(
+                        header.column.columnDef.header,
+                        header.getContext()
+                      )}
+                      {{
+                        asc: " 🔼",
+                        desc: " 🔽",
+                      }[header.column.getIsSorted() as string] ?? null}
+                    </div>
+                    {header.column.getCanFilter() && (
+                      <MaintenanceFilter column={header.column} />
                     )}
-                    {{
-                      asc: " 🔼",
-                      desc: " 🔽",
-                    }[header.column.getIsSorted() as string] ?? null}
-                  </div>
-                  {header.column.getCanFilter() && (
-                    <MaintenanceFilter column={header.column} />
-                  )}
-                </th>
-              ))}
+                  </th>
+                );
+              })}
             </tr>
           ))}
         </thead>
-        <tbody>
+        {/* <tbody>
           {table.getRowModel().rows.map((row) => (
             <tr key={row.id}>
               {row.getVisibleCells().map((cell) => (
@@ -226,15 +215,59 @@ const MaintenanceTable: React.FC<{
               ))}
             </tr>
           ))}
+        </tbody> */}
+        <tbody>
+          {table.getRowModel().rows.map((row) => (
+            <Fragment key={row.id}>
+              {/* Only Render Group Header for Group Rows */}
+              {row.subRows?.length > 0 && (
+                <tr
+                  className={`bg-gray-200 font-bold py-2 px-4
+                  `}
+                >
+                  <td colSpan={columns.length}>
+                    {equipmentMap[row.id.split(":")[1]] || "Unknown Equipment"}
+                  </td>
+                </tr>
+              )}
+
+              {/* Render Rows in the Group or Single Row */}
+              {(row.subRows?.length > 0 ? row.subRows : [row]).map((subRow) => (
+                <tr key={subRow.id}>
+                  {subRow.getVisibleCells().map((cell) => {
+                    // Check if the column is the "equipmentId" column
+                    const isEquipmentColumn = cell.column.id === "equipmentId";
+
+                    // Skip rendering the cell for "Equipment Name" if grouping is applied
+                    if (isEquipmentColumn && grouping.length > 0) {
+                      return null;
+                    }
+                    return (
+                      <td key={cell.id} className="px-4 py-2 border-b">
+                        {flexRender(
+                          cell.column.columnDef.cell,
+                          cell.getContext()
+                        )}
+                      </td>
+                    );
+                  })}
+                </tr>
+              ))}
+            </Fragment>
+          ))}
         </tbody>
       </table>
       <Pagination table={table} />
       <div className="flex items-center justify-center mt-4">
         <button
-          onClick={applyBulkStatusUpdate}
-          className="mr-2 p-2 bg-blue-500 text-white rounded"
+          onClick={() =>
+            setGrouping(
+              (prev) => (prev.length ? [] : ["equipmentId"]) // Toggle grouping
+            )
+          }
+          className=" p-2 bg-blue-500 text-white rounded"
         >
-          Apply Bulk Status Update
+          Toggle Grouping by Equipment
         </button>
         <Link
           href="/maintenance/new"

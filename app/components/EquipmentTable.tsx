@@ -110,12 +110,12 @@ const EquipmentTable: React.FC<{ data: Equipment[] }> = ({ data }) => {
           filterVariant: "view",
         },
         cell: (info) => (
-          <a
+          <Link
             href={`/equipment/${info.getValue()}`}
             className="text-blue-500 hover:text-blue-700"
           >
             View
-          </a>
+          </Link>
         ),
         enableSorting: false,
         // enableColumnFilter: false,

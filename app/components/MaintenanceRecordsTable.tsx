@@ -122,12 +122,12 @@ const MaintenanceTable: React.FC<{
           filterVariant: "view",
         },
         cell: (info) => (
-          <a
+          <Link
             href={`/maintenance/${info.getValue()}`}
             className="text-blue-500 hover:text-blue-700"
           >
             View
-          </a>
+          </Link>
         ),
         enableSorting: false,
       }),

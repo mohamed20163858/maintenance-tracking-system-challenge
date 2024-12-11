@@ -21,11 +21,11 @@ const DeleteButton = ({ id, action }: DeleteButtonProps) => {
           throw new Error(`Failed to delete ${action} record`);
         }
 
-        // alert("Record deleted successfully!");
+        alert("Record deleted successfully!");
         router.push(`/${action}`); // Redirect to the equipment or maintenance table
       } catch (error) {
-        console.error(error);
-        // alert("Failed to delete the record. Please try again.");
+        // console.error(error);
+        alert("Failed to delete the record. Please try again.");
       }
     }
   };

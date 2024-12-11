@@ -1,13 +1,10 @@
 import { test, expect } from "@playwright/test";
 
-// Define the base URL for your application
-const baseURL = "http://localhost:3000"; // Replace with your app's actual URL
-
 // Equipment Management Tests
 test.describe("Equipment Management", () => {
   test("Should create new equipment with valid data", async ({ page }) => {
     // Navigate to the equipment creation page
-    await page.goto(`${baseURL}/equipment/new`);
+    await page.goto("/equipment/new");
 
     // Fill out the form with valid data
     await page.fill("#name", "New Equipment");
@@ -20,6 +17,10 @@ test.describe("Equipment Management", () => {
 
     // Submit the form
     await page.click('button[type="submit"]');
+    await page.waitForResponse(
+      (response) =>
+        response.url().includes("/equipment") && response.status() === 201
+    );
 
     page.on("dialog", async (dialog) => {
       // Verify the dialog text
@@ -30,18 +31,32 @@ test.describe("Equipment Management", () => {
     });
 
     // Assert success message and redirection
-    await expect(page).toHaveURL(`${baseURL}/equipment`);
+    await expect(page).toHaveURL("/equipment");
 
-    // Verify the equipment appears in the table
-    await page.click('button:has-text(">>")');
-    await expect(page.locator("table")).toContainText("New Equipment");
+    // Check the first page for the new record
+    const recordExistsOnFirstPage = await page.locator("table").innerText();
+    if (!recordExistsOnFirstPage.includes("New Equipment")) {
+      // Navigate to the last page using the ">>" button
+      const lastPageButton = page.locator('button:has-text(">>")');
+      const isDisabled = await lastPageButton.getAttribute("disabled");
+
+      if (!isDisabled) {
+        await lastPageButton.click();
+      }
+
+      // Verify the equipment appears in the table on the last page
+      await expect(page.locator("table")).toContainText("New Equipment");
+    } else {
+      // Verify the equipment appears in the table on the first page
+      await expect(page.locator("table")).toContainText("New Equipment");
+    }
   });
 
   test("Should show validation errors for invalid equipment data", async ({
     page,
   }) => {
     // Navigate to the equipment creation page
-    await page.goto(`${baseURL}/equipment/new`);
+    await page.goto("/equipment/new");
 
     // Submit the form without filling it out
     await page.click('button[type="submit"]');
@@ -60,7 +75,7 @@ test.describe("Equipment Management", () => {
 
   test("Should edit existing equipment", async ({ page }) => {
     // Navigate to the equipment table
-    await page.goto(`${baseURL}/equipment`);
+    await page.goto("/equipment");
 
     // Click the edit link for the last added equipment
     await page.click("table tr:last-child a");
@@ -79,12 +94,12 @@ test.describe("Equipment Management", () => {
       await dialog.accept();
     });
     await expect(page.locator("table")).toContainText("Updated Equipment");
-    await expect(page.locator("table")).toContainText("Building B");
+    await expect(page.locator("table")).toContainText("Building momo");
   });
 
   test("Should filter equipment table", async ({ page }) => {
     // Navigate to the equipment table
-    await page.goto(`${baseURL}/equipment`);
+    await page.goto(`/equipment`);
 
     // Apply a filter
     await page.fill(
@@ -99,7 +114,7 @@ test.describe("Equipment Management", () => {
 
   test("Should delete the added equipment", async ({ page }) => {
     // Navigate to the equipment table
-    await page.goto(`${baseURL}/equipment`);
+    await page.goto(`/equipment`);
 
     // Click the Delete button for the last added equipment
     await page.click("table tr:last-child a");
@@ -119,7 +134,7 @@ test.describe("Equipment Management", () => {
     await page.click('button:has-text("Delete")');
 
     // Ensure the correct URL and that the equipment is removed
-    await expect(page).toHaveURL(`${baseURL}/equipment`);
+    await expect(page).toHaveURL("/equipment");
 
     // page.on("dialog", async (dialog) => {
     //   await dialog.accept();

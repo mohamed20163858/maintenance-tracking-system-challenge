@@ -18,6 +18,7 @@ const EquipmentFormPage = () => {
       }
 
       // Redirect or notify user of success
+      alert("Equipment created successfully");
       window.location.href = "/equipment";
     } catch {
       alert("Failed to create new equipment");

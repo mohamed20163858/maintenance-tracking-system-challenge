@@ -50,7 +50,7 @@ const EditEquipmentPage = () => {
       }
 
       // Redirect after successful update (you can also handle this in a more sophisticated way)
-      alert("Record created successfully");
+      alert("Equipment updated successfully");
       window.location.href = "/equipment";
     } catch {
       alert("Failed to update equipment data");

@@ -67,7 +67,9 @@ const EquipmentForm: React.FC<EquipmentFormProps> = ({
           } rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500`}
         />
         {errors.name && (
-          <p className="mt-2 text-sm text-red-500">{errors.name.message}</p>
+          <p className="mt-2 text-sm text-red-500" id="name-error">
+            {errors.name.message}
+          </p>
         )}
       </div>
 
@@ -88,7 +90,9 @@ const EquipmentForm: React.FC<EquipmentFormProps> = ({
           } rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500`}
         />
         {errors.location && (
-          <p className="mt-2 text-sm text-red-500">{errors.location.message}</p>
+          <p className="mt-2 text-sm text-red-500" id="location-error">
+            {errors.location.message}
+          </p>
         )}
       </div>
 
@@ -114,7 +118,7 @@ const EquipmentForm: React.FC<EquipmentFormProps> = ({
           <option value="Shipping">Shipping</option>
         </select>
         {errors.department && (
-          <p className="mt-2 text-sm text-red-500">
+          <p className="mt-2 text-sm text-red-500" id="department-error">
             {errors.department.message}
           </p>
         )}
@@ -137,7 +141,9 @@ const EquipmentForm: React.FC<EquipmentFormProps> = ({
           } rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500`}
         />
         {errors.model && (
-          <p className="mt-2 text-sm text-red-500">{errors.model.message}</p>
+          <p className="mt-2 text-sm text-red-500" id="model-error">
+            {errors.model.message}
+          </p>
         )}
       </div>
 
@@ -158,7 +164,7 @@ const EquipmentForm: React.FC<EquipmentFormProps> = ({
           } rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500`}
         />
         {errors.serialNumber && (
-          <p className="mt-2 text-sm text-red-500">
+          <p className="mt-2 text-sm text-red-500" id="serial-number-error">
             {errors.serialNumber.message}
           </p>
         )}
@@ -197,7 +203,7 @@ const EquipmentForm: React.FC<EquipmentFormProps> = ({
         />
 
         {errors.installDate && (
-          <p className="mt-2 text-sm text-red-500">
+          <p className="mt-2 text-sm text-red-500" id="install-date-error">
             {errors.installDate.message}
           </p>
         )}
@@ -225,7 +231,9 @@ const EquipmentForm: React.FC<EquipmentFormProps> = ({
           <option value="Retired">Retired</option>
         </select>
         {errors.status && (
-          <p className="mt-2 text-sm text-red-500">{errors.status.message}</p>
+          <p className="mt-2 text-sm text-red-500" id="status-error">
+            {errors.status.message}
+          </p>
         )}
       </div>
 

@@ -1,4 +1,6 @@
+import DeleteButton from "@/app/components/DeleteButton";
 import { Equipment } from "../../types/equipment";
+import Link from "next/link";
 
 interface EquipmentDetailProps {
   params: { id: string };
@@ -95,15 +97,19 @@ const EquipmentDetail = async ({ params }: EquipmentDetailProps) => {
         </tbody>
       </table>
       <div className="mt-4 flex items-center justify-between">
-        <a href="/equipment" className="text-blue-500 hover:underline">
+        <Link href="/equipment" className="text-blue-500 hover:underline">
           Back to Equipment List
-        </a>
-        <a
-          href={`/equipment/${id}/edit`}
-          className="text-blue-500 hover:underline mr-4"
-        >
-          Edit
-        </a>
+        </Link>
+        <div className="flex gap-2">
+          <Link
+            href={`/equipment/${id}/edit`}
+            className="text-blue-500 hover:underline mr-4"
+          >
+            Edit
+          </Link>
+          <p>|</p>
+          <DeleteButton id={id} action={"equipment"} />
+        </div>
       </div>
     </div>
   );

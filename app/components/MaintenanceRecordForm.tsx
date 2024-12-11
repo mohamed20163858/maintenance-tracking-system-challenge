@@ -18,8 +18,13 @@ const MaintenanceForm: React.FC<MaintenanceFormProps> = ({
   onSubmit,
 }) => {
   const [equipmentOptions, setEquipmentOptions] = useState<Equipment[]>([]); // Holds equipment data
+  const [selectedInstallDate, setSelectedInstallDate] = useState<Date | null>(
+    null
+  );
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
   const {
     register,
     handleSubmit,
@@ -73,9 +78,24 @@ const MaintenanceForm: React.FC<MaintenanceFormProps> = ({
     fetchEquipment();
   }, []);
 
+  const handleEquipmentChange = (equipmentId: string) => {
+    const selectedEquipment = equipmentOptions.find(
+      (equipment) => equipment.id === equipmentId
+    );
+    if (selectedEquipment) {
+      setSelectedInstallDate(new Date(selectedEquipment.installDate));
+    }
+  };
+  const handleFormSubmit = (data: MaintenanceRecordFormValues) => {
+    if (selectedInstallDate && data.date < selectedInstallDate) {
+      alert("Maintenance date cannot be earlier than the installation date");
+      return;
+    }
+    onSubmit(data); // Proceed if validation passes
+  };
   return (
     <form
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={handleSubmit(handleFormSubmit)}
       className="max-w-lg mx-auto p-6 bg-white shadow-md rounded-lg"
     >
       {/* Equipment Dropdown */}
@@ -94,6 +114,10 @@ const MaintenanceForm: React.FC<MaintenanceFormProps> = ({
           <select
             id="equipmentId"
             {...register("equipmentId", { required: true })}
+            onChange={(e) => {
+              handleEquipmentChange(e.target.value);
+              setValue("equipmentId", e.target.value);
+            }}
             className={`mt-1 block w-full border ${
               errors.equipmentId ? "border-red-500" : "border-gray-300"
             } rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500`}
@@ -101,7 +125,8 @@ const MaintenanceForm: React.FC<MaintenanceFormProps> = ({
             <option value="">Select an equipment</option>
             {equipmentOptions.map((equipment) => (
               <option key={equipment.id} value={equipment.id}>
-                {equipment.name} - {equipment.location}
+                {equipment.name} - {equipment.location} -
+                {new Date(equipment.installDate).toISOString().split("T")[0]}
               </option>
             ))}
           </select>

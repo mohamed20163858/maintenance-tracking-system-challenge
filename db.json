@@ -58,7 +58,7 @@
       "model": "LT-3000",
       "serialNumber": "SN1234567890",
       "installDate": "2021-03-15",
-      "status": "Down"
+      "status": "Retired"
     },
     {
       "id": "7",
@@ -208,7 +208,7 @@
     },
     {
       "id": "MR010",
-      "equipmentId": null,
+      "equipmentId": "5",
       "date": "2024-12-13T09:00:00.000Z",
       "type": "Preventive",
       "technician": "John Doe",
@@ -219,7 +219,7 @@
     },
     {
       "id": "MR011",
-      "equipmentId": null,
+      "equipmentId": "7",
       "date": "2024-12-14T10:00:00.000Z",
       "type": "Repair",
       "technician": "Jane Smith",
@@ -233,7 +233,7 @@
     },
     {
       "id": "MR012",
-      "equipmentId": null,
+      "equipmentId": "4",
       "date": "2024-12-15T14:00:00.000Z",
       "type": "Preventive",
       "technician": "Ali Hassan",
@@ -244,7 +244,7 @@
     },
     {
       "id": "MR013",
-      "equipmentId": null,
+      "equipmentId": "8",
       "date": "2024-12-16T09:00:00.000Z",
       "type": "Repair",
       "technician": "Maria Lopez",
@@ -258,7 +258,7 @@
     },
     {
       "id": "MR014",
-      "equipmentId": null,
+      "equipmentId": "3",
       "date": "2024-12-17T15:00:00.000Z",
       "type": "Preventive",
       "technician": "Omar Khalid",
@@ -269,7 +269,7 @@
     },
     {
       "id": "MR015",
-      "equipmentId": null,
+      "equipmentId": "2",
       "date": "2024-12-18T11:00:00.000Z",
       "type": "Repair",
       "technician": "Sophia Lee",
@@ -283,7 +283,7 @@
     },
     {
       "id": "MR016",
-      "equipmentId": null,
+      "equipmentId": "1",
       "date": "2024-12-19T10:00:00.000Z",
       "type": "Preventive",
       "technician": "Robert King",
@@ -294,7 +294,7 @@
     },
     {
       "id": "MR017",
-      "equipmentId": null,
+      "equipmentId": "6",
       "date": "2024-12-20T10:00:00.000Z",
       "type": "Emergency",
       "technician": "Aisha Malik",
@@ -308,7 +308,7 @@
     },
     {
       "id": "MR018",
-      "equipmentId": null,
+      "equipmentId": "7",
       "date": "2024-12-21T10:00:00.000Z",
       "type": "Preventive",
       "technician": "Carlos Vega",
@@ -319,7 +319,7 @@
     },
     {
       "id": "MR019",
-      "equipmentId": null,
+      "equipmentId": "8",
       "date": "2024-12-22T14:00:00.000Z",
       "type": "Repair",
       "technician": "Jane Smith",
@@ -333,7 +333,7 @@
     },
     {
       "id": "MR020",
-      "equipmentId": null,
+      "equipmentId": "6",
       "date": "2024-12-23T10:00:00.000Z",
       "type": "Preventive",
       "technician": "John Doe",
@@ -480,6 +480,17 @@
       "description": "bbovbkdvdkd",
       "priority": "Medium",
       "completionStatus": "Incomplete"
+    },
+    {
+      "id": "2a9d",
+      "equipmentId": "1",
+      "date": "2024-12-11T00:00:00.000Z",
+      "type": "Repair",
+      "technician": "mohamed saleh",
+      "hoursSpent": 4,
+      "description": "vnoonjervnjoer",
+      "priority": "Low",
+      "completionStatus": "Complete"
     }
   ]
 }

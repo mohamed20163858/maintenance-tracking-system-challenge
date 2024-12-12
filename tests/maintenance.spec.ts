@@ -118,4 +118,35 @@ test.describe("Maintenance Record Tests", () => {
     const outsideRecordDate = "2024-11-30"; // Replace with a date outside the range
     await expect(page.locator(`text=${outsideRecordDate}`)).not.toBeVisible();
   });
+  test("Should delete the added Maintenance Record", async ({ page }) => {
+    // Navigate to the maintenance table
+    await page.goto(`/maintenance`);
+
+    // Click the Delete button for the last added maintenance record
+    await page.click("table tr:last-child a");
+    await page.waitForSelector('button:has-text("Delete")', {
+      state: "visible",
+    });
+    // Wait for dialog to be triggered
+    page.once("dialog", async (dialog) => {
+      expect(dialog.message()).toBe(
+        "Are you sure you want to delete this record?"
+      );
+      await dialog.accept(); // Accept the confirmation dialog
+    });
+
+    // Click the Delete button
+    await page.click('button:has-text("Delete")');
+
+    // Ensure the correct URL and that the equipment is removed
+    await expect(page).toHaveURL("/maintenance");
+    // Apply a filter
+    await page.fill(
+      "table thead tr th:nth-child(3) input[type='text']",
+      "Technician Name Test"
+    );
+    // Assert that the table displays only filtered results
+    const rows = await page.locator("table tbody tr");
+    await expect(rows).toHaveCount(0);
+  });
 });

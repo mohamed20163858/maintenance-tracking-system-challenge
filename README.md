@@ -46,14 +46,27 @@ This README outlines the steps to set up, use, and test the Maintenance Records 
       ```
       - I choose to use chrome as my only and default browser for testing, there are a lot of other factors like number of workers, number of retries, ..etc you can change these configuration by editing `playwright.config.ts` that existed in the root folder 
   ## 2. Features Implementation
-  List of Completed Features
-  Create Maintenance Record:
+  #### 1. Create Equipment:
+  Users can create equipments that will be added dynamically to equipment table.
+  #### 2. Create Maintenance Record:
   Users can add and save maintenance records with dynamic equipment selection.
-  Validation:
+  #### 3. Validation:
   Ensures valid input for fields like maintenance hours and dates.
-  Maintenance Table:
+  #### 4. Equipment Table:
+  Displays a list of all Equipments.
+  #### 5. Maintenance Table:
   Displays a list of all maintenance records with associated equipment names.
-  Date Range Filter:
+  #### 6. Enable sorting:
+  In both tables maintenance and equipment all columns  when you click on any column it will sort the whole table based on the values in this specific column in this order:- 
+  - assending (after the first click on this specific column)
+  - dessending ( after the second click on this specific column)
+  - no sort ( after the third click on this specific column)
+  the sorting is done alphaptically by default expect some specific columns that has special sorting functions to priotrize sorting .
+  for example in equipment table the column status sort the tables based on this priority [operational , maintenance, down, retired] where operational has the lowest priority and retired has the largest priority
+  ### 7. Enable Filtering:
+  In both tables Maintenance and Equipment tables all columns has an assoiated filter according to the the type of the data in the column.
+  For example:- 
+  fields like techinician, Equipment name,..
   Filters records based on a user-defined date range.
   Dynamic Dropdowns:
   Fetches equipment list dynamically from the API.

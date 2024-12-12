@@ -87,62 +87,81 @@ This README outlines the steps to set up, use, and test the Maintenance Records 
   - PUT /equipment/[id]: edit specific equipment.
   - GET /maintenance: Retrieves maintenance records.
   - POST /maintenance: Creates a new maintenance record.
+  - DELETE /maintenance/[id]: Delete specific maintenance record.
+  - PUT /maintenance/[id]: edit specific maintenance record.
   
-  ## 4. Testing Approach
-  Testing Strategy
-  End-to-End Testing (Playwright):
-  Validates user interactions and workflows such as form submissions and filtering.
-  Unit Testing (React):
-  Ensures component-level functionality like form validations and dropdown population.
-  What is Tested and Why
-  Critical Features:
-  Tests ensure critical features like record creation, validation, and filtering work correctly.
-  Edge Cases:
-  Scenarios like invalid dates or exceeding allowed maintenance hours are tested.
-  How to Run Different Types of Tests
-  Run All End-to-End Tests:
-  bash
-  Copy code
-  npx playwright test
-  Run React Unit Tests:
-  bash
-  Copy code
-  npm run test
-  5. Technical Decisions
-  Key Libraries Used and Why
-  React Hook Form:
-  Simplifies handling form state and validation.
-  Playwright:
-  Facilitates end-to-end testing for browser interactions.
-  Zod:
-  Provides schema-based validation for inputs.
-  Architecture Decisions
-  Component-Based Design:
-  Ensures scalability and reusability of UI components.
-  Dynamic Data Handling:
-  Fetches data like equipment details dynamically to ensure flexibility.
-  State Management Approach
-  React State:
-  Used for managing local component states.
-  React Hook Form:
-  Manages form state and validation efficiently.
-  6. Known Issues/Limitations
-  Current Bugs or Limitations
-  Performance:
-  Filtering large datasets in the frontend may cause slowdowns.
-  Validation:
-  Programmatic changes to form fields may bypass validation.
-  Backend API:
-  Limited to a JSON server with no authentication support.
-  Future Improvements
-  Backend Integration:
-  Migrate to a more robust database like PostgreSQL.
-  Advanced Filtering:
-  Add additional filters such as technician or maintenance type.
-  Error Handling:
-  Improve user feedback for API errors.
-  Enhanced UI/UX:
-  Refine the interface with advanced designs and better styling.
+  ## 3. Testing Approach
+  ### 1. Testing Strategy
+  - #### End-to-End Testing (Playwright):
+      - Validates user interactions and workflows such as form submissions and filtering.
+  
+  ### 2. What is Tested and Why
+  - #### Critical Features:
+      - Tests ensure critical features like record creation, validation, and filtering work correctly.
+  - #### Edge Cases:
+      - Scenarios like invalid dates or exceeding allowed maintenance hours are tested.
+  ### 3. How to Run Different Types of Tests
+  #### Run All End-to-End Tests:
+        npx playwright test
+      
+ ## 4. Technical Decisions
+
+### Key Libraries Used and Why
+1. **React Hook Form**:
+   - Simplifies handling form state and validation.
+2. **Playwright**:
+   - Facilitates end-to-end testing for browser interactions.
+3. **Zod**:
+   - Provides schema-based validation for input data, ensuring robust validation rules.
+4. **@tanstack/react-table**:
+   - Used for efficient and customizable rendering of tabular data, with built-in support for sorting, filtering, and pagination.
+5. **Recharts**:
+   - Enables the creation of visually appealing and responsive charts for data visualization.
+
+### Architecture Decisions
+- **Component-Based Design**:
+   - Ensures a modular, reusable, and maintainable UI structure.
+- **Dynamic Data Fetching**:
+   - Uses API calls to populate dropdowns and update records dynamically, ensuring flexibility and up-to-date information.
+- **Table Management**:
+   - Implements **@tanstack/react-table** for managing tabular data, enabling efficient data manipulation and display.
+- **Data Visualization**:
+   - Leverages **Recharts** to present complex data in a user-friendly and interactive manner.
+
+### State Management Approach
+- **React State**:
+   - Handles local state for managing small UI interactions and temporary data.
+- **React Hook Form**:
+   - Provides streamlined management for form data and validations across the application.
+
+---
+
+## 5. Known Issues/Limitations
+
+### Current Bugs or Limitations
+1. **Performance Issues**:
+   - Filtering or sorting large datasets using **@tanstack/react-table** can be slow without server-side support.
+2. **Limited Backend**:
+   - Currently reliant on a JSON server, lacking persistence and authentication mechanisms.
+3. **Validation Edge Cases**:
+   - Certain programmatic changes to input fields may bypass validation rules defined by **Zod**.
+4. **Static Charts**:
+   - Charts created using **Recharts** are currently static and do not include advanced interactivity like drill-down features.
+
+### Future Improvements
+1. **Backend Enhancements**:
+   - Replace JSON server with a robust backend like Node.js with a database such as PostgreSQL for better persistence and authentication.
+2. **Server-Side Table Operations**:
+   - Implement server-side support for sorting, filtering, and pagination to handle large datasets efficiently.
+3. **Interactive Charts**:
+   - Enhance visualizations with dynamic and interactive features using **Recharts**.
+4. **Advanced Validation**:
+   - Improve input validation to handle more complex scenarios and prevent bypassing rules.
+5. **Error Feedback**:
+   - Implement a comprehensive error handling mechanism for better user feedback in case of API failures or input errors.
+6. **UI/UX Upgrades**:
+   - Improve accessibility and usability, with responsive design enhancements and better layout structures.
+
   This document will evolve as the project progresses. Contributions and suggestions are welcome!
   
 

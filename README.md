@@ -14,8 +14,8 @@ This README outlines the steps to set up, use, and test the Maintenance Records 
   - open your terminal and write the following commands:-
   1. Clone the repository:
      ```
-     git clone https://github.com/your-repo-name.git
-     cd your-repo-name
+     git clone https://github.com/mohamed20163858/maintenance-tracking-system-challenge.git
+     cd maintenance-tracking-system-challenge
      ```
   2. Install the dependencies:
      

@@ -1,7 +1,10 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Maintenance Records Management Application
 
-## Getting Started
+This README outlines the steps to set up, use, and test the Maintenance Records Management application, highlights key features, discusses technical decisions, and notes any known issues or limitations.
 
+---
+
+## 1. Setup Instructions
 First, run the development server:
 
 ```bash

@@ -66,15 +66,29 @@ This README outlines the steps to set up, use, and test the Maintenance Records 
   ### 7. Enable Filtering:
   In both tables Maintenance and Equipment tables all columns has an assoiated filter according to the the type of the data in the column.
   For example:- 
-  fields like techinician, Equipment name,..
-  Filters records based on a user-defined date range.
-  Dynamic Dropdowns:
-  Fetches equipment list dynamically from the API.
-  API Endpoints
-  GET /equipment: Retrieves all equipment details.
-  POST /maintenance-records: Creates a new maintenance record.
-  GET /maintenance-records: Retrieves maintenance records, supports filtering.
-  4. Testing Approach
+  fields like techinician, Equipment name,..etc has a search filter to filter the table data using the search key that user will enter inside the specific column  using input of type text
+  fields like hours:- has a number range filter from min to max that user will provide using 2 inputs of type number
+  fields like date:- has a date range filter . this is done by using two inputs of type date named startDate and endDate sequentially.
+  fields like status , type, ..etc:- has a cateorigical filter. this is done using Dropdown with specific options.
+  ### 8. Dynamic Dropdowns:
+  Fetches equipment list dynamically from the API in maintenance record form.
+  ### 9. Enable bulk status update:
+  In equipment table i make it easy for user to update the status of a group of equipment during his surf in equipment table by using the dropDown menu in each record in the status column
+  and after he finish he just need to click on th apply bluk update button and in an instant of eye all the selected column will be updated on the fly
+  ### 10. Enable Grouping maintenance records using equipment name:
+  In maintenance records table i created a toggle button that when the user click it. it will switch between two themes.
+  - the first theme is creating subtables for each equipment name that enable user to track the maintenance history of each equipment. enabled by default
+  - the second theme is just a regular main table that contain maintenance records . 
+  ### 11. API Endpoints( will be updated in the future)
+  i didnot build the backend of this project yet, but to make things easier for me i used json-server to mock the endpoints i will use in the future to make integration easier and here is the list of api endpoints i used in this application
+  - GET /equipment: Retrieves all equipment details.
+  - POST /equipment: Creates a new equipment.
+  - DELETE /equipment/[id]: Delete specific equipment.
+  - PUT /equipment/[id]: edit specific equipment.
+  - GET /maintenance: Retrieves maintenance records.
+  - POST /maintenance: Creates a new maintenance record.
+  
+  ## 4. Testing Approach
   Testing Strategy
   End-to-End Testing (Playwright):
   Validates user interactions and workflows such as form submissions and filtering.

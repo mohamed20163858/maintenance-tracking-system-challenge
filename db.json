@@ -6,7 +6,7 @@
       "department": "Machining",
       "model": "CNC-1000",
       "serialNumber": "SN123456",
-      "installDate": "2024-12-07T00:00:00.000Z",
+      "installDate": "2014-12-07T00:00:00.000Z",
       "status": "Operational",
       "id": "1"
     },
@@ -17,7 +17,7 @@
       "department": "Assembly",
       "model": "LaserPro-200",
       "serialNumber": "SN789012",
-      "installDate": "2021-09-10",
+      "installDate": "2011-09-10",
       "status": "Operational"
     },
     {
@@ -27,7 +27,7 @@
       "department": "Packaging",
       "model": "3DP-300X",
       "serialNumber": "SN456789",
-      "installDate": "2023-02-11",
+      "installDate": "2013-02-11",
       "status": "Operational"
     },
     {
@@ -37,7 +37,7 @@
       "department": "Packaging",
       "model": "HP-750",
       "serialNumber": "SN963852",
-      "installDate": "2020-11-30",
+      "installDate": "2010-11-30",
       "status": "Operational"
     },
     {
@@ -47,7 +47,7 @@
       "department": "Shipping",
       "model": "WR-450",
       "serialNumber": "SN741258",
-      "installDate": "2019-06-25",
+      "installDate": "2009-06-25",
       "status": "Down"
     },
     {
@@ -57,7 +57,7 @@
       "department": "Machining",
       "model": "LT-3000",
       "serialNumber": "SN1234567890",
-      "installDate": "2021-03-15",
+      "installDate": "2011-03-15",
       "status": "Retired"
     },
     {
@@ -67,7 +67,7 @@
       "department": "Assembly",
       "model": "XR1-2021",
       "serialNumber": "SN0987654321",
-      "installDate": "2022-07-10",
+      "installDate": "2012-07-10",
       "status": "Down"
     },
     {
@@ -77,7 +77,7 @@
       "department": "Packaging",
       "model": "CV-500",
       "serialNumber": "SN2233445566",
-      "installDate": "2019-06-22",
+      "installDate": "2009-06-22",
       "status": "Down"
     },
     {
@@ -87,7 +87,7 @@
       "department": "Shipping",
       "model": "SS-Pro",
       "serialNumber": "SN3344556677",
-      "installDate": "2020-11-13",
+      "installDate": "2010-11-13",
       "status": "Maintenance"
     }
   ],
@@ -111,9 +111,7 @@
       "technician": "Jane Smith",
       "hoursSpent": 5,
       "description": "Replaced faulty laser module.",
-      "partsReplaced": [
-        "Laser Module"
-      ],
+      "partsReplaced": ["Laser Module"],
       "priority": "High",
       "completionStatus": "Complete"
     },
@@ -136,9 +134,7 @@
       "technician": "Maria Lopez",
       "hoursSpent": 6,
       "description": "Hydraulic Press malfunction during operation.",
-      "partsReplaced": [
-        "Hydraulic Hose"
-      ],
+      "partsReplaced": ["Hydraulic Hose"],
       "priority": "High",
       "completionStatus": "Complete"
     },
@@ -150,9 +146,7 @@
       "technician": "Omar Khalid",
       "hoursSpent": 4,
       "description": "Welding Robot not responding. Replaced control unit.",
-      "partsReplaced": [
-        "Control Unit"
-      ],
+      "partsReplaced": ["Control Unit"],
       "priority": "High",
       "completionStatus": "Incomplete"
     },
@@ -175,9 +169,7 @@
       "technician": "Robert King",
       "hoursSpent": 7,
       "description": "Assembly Robot XR1 arm replacement.",
-      "partsReplaced": [
-        "Robot Arm"
-      ],
+      "partsReplaced": ["Robot Arm"],
       "priority": "High",
       "completionStatus": "Pending Parts"
     },
@@ -189,9 +181,7 @@
       "technician": "Aisha Malik",
       "hoursSpent": 8,
       "description": "Packaging Conveyor 500 motor failure.",
-      "partsReplaced": [
-        "Conveyor Motor"
-      ],
+      "partsReplaced": ["Conveyor Motor"],
       "priority": "High",
       "completionStatus": "Complete"
     },
@@ -209,7 +199,7 @@
     {
       "id": "MR010",
       "equipmentId": "5",
-      "date": "2024-12-13T09:00:00.000Z",
+      "date": "2024-12-03T09:00:00.000Z",
       "type": "Preventive",
       "technician": "John Doe",
       "hoursSpent": 4,
@@ -220,21 +210,19 @@
     {
       "id": "MR011",
       "equipmentId": "7",
-      "date": "2024-12-14T10:00:00.000Z",
+      "date": "2024-12-04T10:00:00.000Z",
       "type": "Repair",
       "technician": "Jane Smith",
       "hoursSpent": 5,
       "description": "Robotic Arm AS100 joint repair.",
-      "partsReplaced": [
-        "Joint Mechanism"
-      ],
+      "partsReplaced": ["Joint Mechanism"],
       "priority": "High",
       "completionStatus": "Complete"
     },
     {
       "id": "MR012",
       "equipmentId": "4",
-      "date": "2024-12-15T14:00:00.000Z",
+      "date": "2024-12-05T14:00:00.000Z",
       "type": "Preventive",
       "technician": "Ali Hassan",
       "hoursSpent": 2,
@@ -245,21 +233,19 @@
     {
       "id": "MR013",
       "equipmentId": "8",
-      "date": "2024-12-16T09:00:00.000Z",
+      "date": "2024-12-06T09:00:00.000Z",
       "type": "Repair",
       "technician": "Maria Lopez",
       "hoursSpent": 6,
       "description": "Dock Loader Elite hydraulics replaced.",
-      "partsReplaced": [
-        "Hydraulic Pump"
-      ],
+      "partsReplaced": ["Hydraulic Pump"],
       "priority": "High",
       "completionStatus": "Complete"
     },
     {
       "id": "MR014",
       "equipmentId": "3",
-      "date": "2024-12-17T15:00:00.000Z",
+      "date": "2024-11-17T15:00:00.000Z",
       "type": "Preventive",
       "technician": "Omar Khalid",
       "hoursSpent": 3,
@@ -270,21 +256,19 @@
     {
       "id": "MR015",
       "equipmentId": "2",
-      "date": "2024-12-18T11:00:00.000Z",
+      "date": "2024-11-18T11:00:00.000Z",
       "type": "Repair",
       "technician": "Sophia Lee",
       "hoursSpent": 7,
       "description": "Welding Robot WR-300 circuit board replaced.",
-      "partsReplaced": [
-        "Circuit Board"
-      ],
+      "partsReplaced": ["Circuit Board"],
       "priority": "High",
       "completionStatus": "Pending Parts"
     },
     {
       "id": "MR016",
       "equipmentId": "1",
-      "date": "2024-12-19T10:00:00.000Z",
+      "date": "2024-11-19T10:00:00.000Z",
       "type": "Preventive",
       "technician": "Robert King",
       "hoursSpent": 2,
@@ -295,21 +279,19 @@
     {
       "id": "MR017",
       "equipmentId": "6",
-      "date": "2024-12-20T10:00:00.000Z",
+      "date": "2024-11-20T10:00:00.000Z",
       "type": "Emergency",
       "technician": "Aisha Malik",
       "hoursSpent": 5,
       "description": "Forklift FLX-Pro engine failure.",
-      "partsReplaced": [
-        "Engine"
-      ],
+      "partsReplaced": ["Engine"],
       "priority": "High",
       "completionStatus": "Complete"
     },
     {
       "id": "MR018",
       "equipmentId": "7",
-      "date": "2024-12-21T10:00:00.000Z",
+      "date": "2024-11-21T10:00:00.000Z",
       "type": "Preventive",
       "technician": "Carlos Vega",
       "hoursSpent": 3,
@@ -320,21 +302,19 @@
     {
       "id": "MR019",
       "equipmentId": "8",
-      "date": "2024-12-22T14:00:00.000Z",
+      "date": "2024-11-22T14:00:00.000Z",
       "type": "Repair",
       "technician": "Jane Smith",
       "hoursSpent": 4,
       "description": "Screw Assembly Robot SAR-1 sensor replacement.",
-      "partsReplaced": [
-        "Sensor"
-      ],
+      "partsReplaced": ["Sensor"],
       "priority": "High",
       "completionStatus": "Complete"
     },
     {
       "id": "MR020",
       "equipmentId": "6",
-      "date": "2024-12-23T10:00:00.000Z",
+      "date": "2024-11-23T10:00:00.000Z",
       "type": "Preventive",
       "technician": "John Doe",
       "hoursSpent": 2,
@@ -350,9 +330,7 @@
       "technician": "John Doe",
       "hoursSpent": 4,
       "description": "Quarterly maintenance and lubrication of CNC Machine 1.",
-      "partsReplaced": [
-        "Lubricant Filter"
-      ],
+      "partsReplaced": ["Lubricant Filter"],
       "priority": "Medium",
       "completionStatus": "Complete"
     },
@@ -364,9 +342,7 @@
       "technician": "Jane Smith",
       "hoursSpent": 3,
       "description": "Replaced broken coolant pump.",
-      "partsReplaced": [
-        "Coolant Pump"
-      ],
+      "partsReplaced": ["Coolant Pump"],
       "priority": "High",
       "completionStatus": "Complete"
     },
@@ -384,14 +360,12 @@
     {
       "id": "MR004",
       "equipmentId": "2",
-      "date": "2024-12-15T14:00:00.000Z",
+      "date": "2024-11-15T14:00:00.000Z",
       "type": "Repair",
       "technician": "Emma Brown",
       "hoursSpent": 5,
       "description": "Replaced damaged laser tube.",
-      "partsReplaced": [
-        "Laser Tube"
-      ],
+      "partsReplaced": ["Laser Tube"],
       "priority": "High",
       "completionStatus": "Complete"
     },
@@ -409,14 +383,12 @@
     {
       "id": "MR006",
       "equipmentId": "3",
-      "date": "2024-12-13T12:30:00.000Z",
+      "date": "2024-11-13T12:30:00.000Z",
       "type": "Emergency",
       "technician": "Diana Lee",
       "hoursSpent": 6,
       "description": "Replaced extruder motor after failure.",
-      "partsReplaced": [
-        "Extruder Motor"
-      ],
+      "partsReplaced": ["Extruder Motor"],
       "priority": "High",
       "completionStatus": "Complete"
     },
@@ -428,16 +400,14 @@
       "technician": "Michael Carter",
       "hoursSpent": 4,
       "description": "Fixed hydraulic system leaks.",
-      "partsReplaced": [
-        "Hydraulic Seals"
-      ],
+      "partsReplaced": ["Hydraulic Seals"],
       "priority": "Medium",
       "completionStatus": "Complete"
     },
     {
       "id": "MR008",
       "equipmentId": "4",
-      "date": "2024-12-16T10:00:00.000Z",
+      "date": "2024-11-16T10:00:00.000Z",
       "type": "Preventive",
       "technician": "Sarah Adams",
       "hoursSpent": 3,
@@ -453,16 +423,14 @@
       "technician": "Oliver White",
       "hoursSpent": 8,
       "description": "Repaired Welding Robot's broken arm actuator.",
-      "partsReplaced": [
-        "Actuator"
-      ],
+      "partsReplaced": ["Actuator"],
       "priority": "High",
       "completionStatus": "Pending Parts"
     },
     {
       "id": "MR010",
       "equipmentId": "5",
-      "date": "2024-12-20T13:45:00.000Z",
+      "date": "2024-11-20T13:45:00.000Z",
       "type": "Emergency",
       "technician": "Ethan Martin",
       "hoursSpent": 7,

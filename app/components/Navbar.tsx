@@ -74,6 +74,18 @@ const Navbar: React.FC = () => {
             >
               Maintenance Table
             </Link>
+            <Link
+              href="/equipment/new"
+              className="hover:bg-blue-700 px-3 py-2 rounded-md"
+            >
+              Create Equipment
+            </Link>
+            <Link
+              href="/maintenance/new"
+              className="hover:bg-blue-700 px-3 py-2 rounded-md"
+            >
+              Create Maintenance Reocrd
+            </Link>
           </div>
         </div>
       </div>

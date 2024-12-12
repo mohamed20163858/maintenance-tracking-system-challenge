@@ -1,4 +1,6 @@
+import Link from "next/link";
 import { MaintenanceRecord } from "../../types/maintenance";
+import DeleteButton from "@/app/components/DeleteButton";
 
 interface MaintenanceDetailProps {
   params: { id: string };
@@ -113,15 +115,19 @@ const MaintenanceDetail = async ({ params }: MaintenanceDetailProps) => {
         </tbody>
       </table>
       <div className="mt-4 flex items-center justify-between">
-        <a href="/maintenance" className="text-blue-500 hover:underline">
+        <Link href="/maintenance" className="text-blue-500 hover:underline">
           Back to Maintenance Records
-        </a>
-        <a
-          href={`/maintenance/${id}/edit`}
-          className="text-blue-500 hover:underline mr-4"
-        >
-          Edit
-        </a>
+        </Link>
+        <div className="flex gap-2">
+          <Link
+            href={`/maintenance/${id}/edit`}
+            className="text-blue-500 hover:underline mr-4"
+          >
+            Edit
+          </Link>
+          <p>|</p>
+          <DeleteButton id={id} action={"maintenance"} />
+        </div>
       </div>
     </div>
   );

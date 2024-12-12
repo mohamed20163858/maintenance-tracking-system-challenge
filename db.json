@@ -111,9 +111,7 @@
       "technician": "Jane Smith",
       "hoursSpent": 5,
       "description": "Replaced faulty laser module.",
-      "partsReplaced": [
-        "Laser Module"
-      ],
+      "partsReplaced": ["Laser Module"],
       "priority": "High",
       "completionStatus": "Complete"
     },
@@ -136,9 +134,7 @@
       "technician": "Maria Lopez",
       "hoursSpent": 6,
       "description": "Hydraulic Press malfunction during operation.",
-      "partsReplaced": [
-        "Hydraulic Hose"
-      ],
+      "partsReplaced": ["Hydraulic Hose"],
       "priority": "High",
       "completionStatus": "Complete"
     },
@@ -150,9 +146,7 @@
       "technician": "Omar Khalid",
       "hoursSpent": 4,
       "description": "Welding Robot not responding. Replaced control unit.",
-      "partsReplaced": [
-        "Control Unit"
-      ],
+      "partsReplaced": ["Control Unit"],
       "priority": "High",
       "completionStatus": "Incomplete"
     },
@@ -175,9 +169,7 @@
       "technician": "Robert King",
       "hoursSpent": 7,
       "description": "Assembly Robot XR1 arm replacement.",
-      "partsReplaced": [
-        "Robot Arm"
-      ],
+      "partsReplaced": ["Robot Arm"],
       "priority": "High",
       "completionStatus": "Pending Parts"
     },
@@ -189,9 +181,7 @@
       "technician": "Aisha Malik",
       "hoursSpent": 8,
       "description": "Packaging Conveyor 500 motor failure.",
-      "partsReplaced": [
-        "Conveyor Motor"
-      ],
+      "partsReplaced": ["Conveyor Motor"],
       "priority": "High",
       "completionStatus": "Complete"
     },
@@ -225,9 +215,7 @@
       "technician": "Jane Smith",
       "hoursSpent": 5,
       "description": "Robotic Arm AS100 joint repair.",
-      "partsReplaced": [
-        "Joint Mechanism"
-      ],
+      "partsReplaced": ["Joint Mechanism"],
       "priority": "High",
       "completionStatus": "Complete"
     },
@@ -250,9 +238,7 @@
       "technician": "Maria Lopez",
       "hoursSpent": 6,
       "description": "Dock Loader Elite hydraulics replaced.",
-      "partsReplaced": [
-        "Hydraulic Pump"
-      ],
+      "partsReplaced": ["Hydraulic Pump"],
       "priority": "High",
       "completionStatus": "Complete"
     },
@@ -275,9 +261,7 @@
       "technician": "Sophia Lee",
       "hoursSpent": 7,
       "description": "Welding Robot WR-300 circuit board replaced.",
-      "partsReplaced": [
-        "Circuit Board"
-      ],
+      "partsReplaced": ["Circuit Board"],
       "priority": "High",
       "completionStatus": "Pending Parts"
     },
@@ -300,9 +284,7 @@
       "technician": "Aisha Malik",
       "hoursSpent": 5,
       "description": "Forklift FLX-Pro engine failure.",
-      "partsReplaced": [
-        "Engine"
-      ],
+      "partsReplaced": ["Engine"],
       "priority": "High",
       "completionStatus": "Complete"
     },
@@ -325,9 +307,7 @@
       "technician": "Jane Smith",
       "hoursSpent": 4,
       "description": "Screw Assembly Robot SAR-1 sensor replacement.",
-      "partsReplaced": [
-        "Sensor"
-      ],
+      "partsReplaced": ["Sensor"],
       "priority": "High",
       "completionStatus": "Complete"
     },
@@ -350,9 +330,7 @@
       "technician": "John Doe",
       "hoursSpent": 4,
       "description": "Quarterly maintenance and lubrication of CNC Machine 1.",
-      "partsReplaced": [
-        "Lubricant Filter"
-      ],
+      "partsReplaced": ["Lubricant Filter"],
       "priority": "Medium",
       "completionStatus": "Complete"
     },
@@ -364,9 +342,7 @@
       "technician": "Jane Smith",
       "hoursSpent": 3,
       "description": "Replaced broken coolant pump.",
-      "partsReplaced": [
-        "Coolant Pump"
-      ],
+      "partsReplaced": ["Coolant Pump"],
       "priority": "High",
       "completionStatus": "Complete"
     },
@@ -389,9 +365,7 @@
       "technician": "Emma Brown",
       "hoursSpent": 5,
       "description": "Replaced damaged laser tube.",
-      "partsReplaced": [
-        "Laser Tube"
-      ],
+      "partsReplaced": ["Laser Tube"],
       "priority": "High",
       "completionStatus": "Complete"
     },
@@ -414,9 +388,7 @@
       "technician": "Diana Lee",
       "hoursSpent": 6,
       "description": "Replaced extruder motor after failure.",
-      "partsReplaced": [
-        "Extruder Motor"
-      ],
+      "partsReplaced": ["Extruder Motor"],
       "priority": "High",
       "completionStatus": "Complete"
     },
@@ -428,9 +400,7 @@
       "technician": "Michael Carter",
       "hoursSpent": 4,
       "description": "Fixed hydraulic system leaks.",
-      "partsReplaced": [
-        "Hydraulic Seals"
-      ],
+      "partsReplaced": ["Hydraulic Seals"],
       "priority": "Medium",
       "completionStatus": "Complete"
     },
@@ -453,9 +423,7 @@
       "technician": "Oliver White",
       "hoursSpent": 8,
       "description": "Repaired Welding Robot's broken arm actuator.",
-      "partsReplaced": [
-        "Actuator"
-      ],
+      "partsReplaced": ["Actuator"],
       "priority": "High",
       "completionStatus": "Pending Parts"
     },

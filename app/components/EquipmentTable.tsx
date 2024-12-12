@@ -67,7 +67,7 @@ const EquipmentTable: React.FC<{ data: Equipment[] }> = ({ data }) => {
         meta: {
           filterVariant: "range",
         },
-        cell: (info) => new Date(info.getValue()).toLocaleDateString(),
+        cell: (info) => new Date(info.getValue()).toISOString().split("T")[0],
         filterFn: (row, columnId, filterValue) => {
           const value: string = row.getValue(columnId);
           const [start, end] = filterValue as [string, string];

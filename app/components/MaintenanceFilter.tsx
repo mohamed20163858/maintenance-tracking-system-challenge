@@ -13,12 +13,12 @@ export default function MaintenanceFilter({
     <div>
       <div className="flex items-center space-x-2">
         {/* See faceted column filters example for startDate endDate values functionality */}
-        <label htmlFor="equipment-start-date" className="text-[14px]">
+        <label htmlFor="maintenance-start-date" className="text-[14px]">
           Start Date:-{" "}
         </label>
         <DebouncedInput
           type="date"
-          id="equipment-start-date"
+          id="maintenance-start-date"
           value={(columnFilterValue as [string, string])?.[0] ?? ""}
           onChange={(value) =>
             column.setFilterValue((old: [string, string]) => [value, old?.[1]])
@@ -26,12 +26,12 @@ export default function MaintenanceFilter({
           placeholder={`Start Date`}
           className="w-24 border shadow rounded"
         />
-        <label htmlFor="equipment-end-date" className="text-[14px]">
+        <label htmlFor="maintenance-end-date" className="text-[14px]">
           End Date:-{" "}
         </label>
         <DebouncedInput
           type="date"
-          id="equipment-end-date"
+          id="maintenance-end-date"
           value={(columnFilterValue as [string, string])?.[1] ?? ""}
           onChange={(value) =>
             column.setFilterValue((old: [string, string]) => [old?.[0], value])

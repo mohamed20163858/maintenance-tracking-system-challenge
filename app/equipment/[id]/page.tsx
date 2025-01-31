@@ -3,11 +3,11 @@ import { Equipment } from "../../types/equipment";
 import Link from "next/link";
 
 interface EquipmentDetailProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 const EquipmentDetail = async ({ params }: EquipmentDetailProps) => {
-  const { id } = params;
+  const { id } = await params;
 
   // Fetch the equipment details
   const fetchEquipmentDetails = async () => {

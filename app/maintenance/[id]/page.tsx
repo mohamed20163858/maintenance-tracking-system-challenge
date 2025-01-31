@@ -3,11 +3,11 @@ import { MaintenanceRecord } from "../../types/maintenance";
 import DeleteButton from "@/app/components/DeleteButton";
 
 interface MaintenanceDetailProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 const MaintenanceDetail = async ({ params }: MaintenanceDetailProps) => {
-  const { id } = params;
+  const { id } = await params;
 
   // Fetch maintenance record details
   const fetchMaintenanceDetails = async () => {

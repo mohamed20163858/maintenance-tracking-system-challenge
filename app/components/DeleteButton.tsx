@@ -23,7 +23,7 @@ const DeleteButton = ({ id, action }: DeleteButtonProps) => {
 
         alert("Record deleted successfully!");
         router.push(`/${action}`); // Redirect to the equipment or maintenance table
-      } catch (error) {
+      } catch {
         // console.error(error);
         alert("Failed to delete the record. Please try again.");
       }

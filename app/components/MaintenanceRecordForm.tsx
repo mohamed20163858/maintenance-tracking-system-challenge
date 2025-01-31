@@ -63,7 +63,9 @@ const MaintenanceForm: React.FC<MaintenanceFormProps> = ({
     const fetchEquipment = async () => {
       setLoading(true);
       try {
-        const response = await fetch("http://localhost:3001/equipment");
+        const BACKEND_URL =
+          process.env.BACKEND_URL || "https://maintenance-fake-data.vercel.app";
+        const response = await fetch(`${BACKEND_URL}/equipment`);
         if (!response.ok) throw new Error("Failed to fetch equipment data");
         const data: Equipment[] = await response.json();
         setEquipmentOptions(data);

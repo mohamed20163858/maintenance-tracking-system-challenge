@@ -11,7 +11,9 @@ const EquipmentDetail = async ({ params }: EquipmentDetailProps) => {
 
   // Fetch the equipment details
   const fetchEquipmentDetails = async () => {
-    const response = await fetch(`http://localhost:3001/equipment/${id}`, {
+    const BACKEND_URL =
+      process.env.BACKEND_URL || "https://maintenance-fake-data.vercel.app";
+    const response = await fetch(`${BACKEND_URL}/equipment/${id}`, {
       cache: "no-store", // Ensures the latest data is fetched
     });
     if (!response.ok) {

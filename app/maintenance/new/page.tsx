@@ -9,7 +9,9 @@ const MaintenanceFormPage = () => {
     // console.log("Form submitted with data:", data); // Log the form data
 
     try {
-      const response = await fetch("http://localhost:3001/maintenance", {
+      const BACKEND_URL =
+        process.env.BACKEND_URL || "https://maintenance-fake-data.vercel.app";
+      const response = await fetch(`${BACKEND_URL}/maintenance`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

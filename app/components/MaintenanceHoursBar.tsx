@@ -25,9 +25,11 @@ const MaintenanceHoursBar: React.FC = () => {
   useEffect(() => {
     const fetchAndProcessData = async () => {
       try {
+        const BACKEND_URL =
+          process.env.BACKEND_URL || "https://maintenance-fake-data.vercel.app";
         const [equipmentResponse, maintenanceResponse] = await Promise.all([
-          fetch("http://localhost:3001/equipment"),
-          fetch("http://localhost:3001/maintenance"),
+          fetch(`${BACKEND_URL}/equipment`),
+          fetch(`${BACKEND_URL}/maintenance`),
         ]);
 
         if (!equipmentResponse.ok || !maintenanceResponse.ok) {

@@ -18,9 +18,10 @@ const EditMaintenancePage = () => {
     if (id) {
       const fetchMaintenance = async () => {
         try {
-          const response = await fetch(
-            `http://localhost:3001/maintenance/${id}`
-          );
+          const BACKEND_URL =
+            process.env.BACKEND_URL ||
+            "https://maintenance-fake-data.vercel.app";
+          const response = await fetch(`${BACKEND_URL}/maintenance/${id}`);
           const data = await response.json();
           if (response.ok) {
             setMaintenance(data);
@@ -41,7 +42,9 @@ const EditMaintenancePage = () => {
   const handleUpdate = async (data: Omit<MaintenanceRecord, "id">) => {
     try {
       const recordWithId = { id, ...data }; // Add the `id` back
-      const response = await fetch(`http://localhost:3001/maintenance/${id}`, {
+      const BACKEND_URL =
+        process.env.BACKEND_URL || "https://maintenance-fake-data.vercel.app";
+      const response = await fetch(`${BACKEND_URL}/maintenance/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(recordWithId),

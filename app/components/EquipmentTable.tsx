@@ -146,8 +146,10 @@ const EquipmentTable: React.FC<{ data: Equipment[] }> = ({ data }) => {
   // };
   const applyBulkStatusUpdate = async () => {
     try {
+      const BACKEND_URL =
+        process.env.BACKEND_URL || "https://maintenance-fake-data.vercel.app";
       const updatePromises = Object.entries(statusChanges).map(([id, status]) =>
-        fetch(`http://localhost:3001/equipment/${id}`, {
+        fetch(`${BACKEND_URL}/equipment/${id}`, {
           method: "PATCH", // or PUT
           headers: {
             "Content-Type": "application/json",

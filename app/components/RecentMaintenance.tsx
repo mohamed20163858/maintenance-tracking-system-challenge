@@ -16,9 +16,11 @@ const RecentMaintenanceTable: React.FC = () => {
   useEffect(() => {
     const fetchMaintenanceData = async () => {
       try {
+        const BACKEND_URL =
+          process.env.BACKEND_URL || "https://maintenance-fake-data.vercel.app";
         const [maintenanceRes, equipmentRes] = await Promise.all([
-          fetch("http://localhost:3001/maintenance"),
-          fetch("http://localhost:3001/equipment"),
+          fetch(`${BACKEND_URL}/maintenance`),
+          fetch(`${BACKEND_URL}/equipment`),
         ]);
         if (!maintenanceRes.ok || !equipmentRes.ok) {
           throw new Error("Failed to fetch data");

@@ -11,7 +11,9 @@ const MaintenanceDetail = async ({ params }: MaintenanceDetailProps) => {
 
   // Fetch maintenance record details
   const fetchMaintenanceDetails = async () => {
-    const response = await fetch(`http://localhost:3001/maintenance/${id}`, {
+    const BACKEND_URL =
+      process.env.BACKEND_URL || "https://maintenance-fake-data.vercel.app";
+    const response = await fetch(`${BACKEND_URL}/maintenance/${id}`, {
       cache: "no-store", // Ensures fresh data
     });
     if (!response.ok) {

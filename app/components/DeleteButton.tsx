@@ -13,7 +13,9 @@ const DeleteButton = ({ id, action }: DeleteButtonProps) => {
   const deleteFunction = async () => {
     if (confirm("Are you sure you want to delete this record?")) {
       try {
-        const response = await fetch(`http://localhost:3001/${action}/${id}`, {
+        const BACKEND_URL =
+          process.env.BACKEND_URL || "https://maintenance-fake-data.vercel.app";
+        const response = await fetch(`${BACKEND_URL}/${action}/${id}`, {
           method: "DELETE",
         });
 

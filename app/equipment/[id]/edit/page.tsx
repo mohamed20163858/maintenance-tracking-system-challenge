@@ -18,7 +18,10 @@ const EditEquipmentPage = () => {
     if (id) {
       const fetchEquipment = async () => {
         try {
-          const response = await fetch(`http://localhost:3001/equipment/${id}`);
+          const BACKEND_URL =
+            process.env.NEXT_PUBLIC_BACKEND_URL ||
+            "https://maintenance-fake-data.vercel.app";
+          const response = await fetch(`${BACKEND_URL}/equipment/${id}`);
           const data = await response.json();
           if (response.ok) {
             console.log(data);
@@ -40,7 +43,8 @@ const EditEquipmentPage = () => {
   const handleUpdate = async (data: EquipmentFormValues) => {
     try {
       const BACKEND_URL =
-        process.env.BACKEND_URL || "https://maintenance-fake-data.vercel.app";
+        process.env.NEXT_PUBLIC_BACKEND_URL ||
+        "https://maintenance-fake-data.vercel.app";
       const response = await fetch(`${BACKEND_URL}/equipment/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },

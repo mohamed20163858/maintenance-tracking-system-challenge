@@ -26,7 +26,8 @@ const MaintenanceHoursBar: React.FC = () => {
     const fetchAndProcessData = async () => {
       try {
         const BACKEND_URL =
-          process.env.BACKEND_URL || "https://maintenance-fake-data.vercel.app";
+          process.env.NEXT_PUBLIC_BACKEND_URL ||
+          "https://maintenance-fake-data.vercel.app";
         const [equipmentResponse, maintenanceResponse] = await Promise.all([
           fetch(`${BACKEND_URL}/equipment`),
           fetch(`${BACKEND_URL}/maintenance`),
@@ -50,7 +51,7 @@ const MaintenanceHoursBar: React.FC = () => {
 
         maintenanceData.forEach((maintenance) => {
           const equipment = equipmentData.find(
-            (eq) => eq.id === maintenance.equipmentId
+            (eq) => eq._id === maintenance.equipmentId
           );
           if (equipment) {
             const department = departmentHours.find(

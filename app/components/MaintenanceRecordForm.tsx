@@ -64,7 +64,8 @@ const MaintenanceForm: React.FC<MaintenanceFormProps> = ({
       setLoading(true);
       try {
         const BACKEND_URL =
-          process.env.BACKEND_URL || "https://maintenance-fake-data.vercel.app";
+          process.env.NEXT_PUBLIC_BACKEND_URL ||
+          "https://maintenance-fake-data.vercel.app";
         const response = await fetch(`${BACKEND_URL}/equipment`);
         if (!response.ok) throw new Error("Failed to fetch equipment data");
         const data: Equipment[] = await response.json();
@@ -82,7 +83,7 @@ const MaintenanceForm: React.FC<MaintenanceFormProps> = ({
 
   const handleEquipmentChange = (equipmentId: string) => {
     const selectedEquipment = equipmentOptions.find(
-      (equipment) => equipment.id === equipmentId
+      (equipment) => equipment._id === equipmentId
     );
     if (selectedEquipment) {
       setSelectedInstallDate(new Date(selectedEquipment.installDate));
@@ -126,7 +127,7 @@ const MaintenanceForm: React.FC<MaintenanceFormProps> = ({
           >
             <option value="">Select an equipment</option>
             {equipmentOptions.map((equipment) => (
-              <option key={equipment.id} value={equipment.id}>
+              <option key={equipment._id} value={equipment._id}>
                 {equipment.name} - {equipment.location} -
                 {new Date(equipment.installDate).toISOString().split("T")[0]}
               </option>

@@ -1,5 +1,5 @@
 export interface MaintenanceRecord {
-  id: string;
+  _id: string;
   equipmentId: string;
   date: Date;
   type: "Preventive" | "Repair" | "Emergency";

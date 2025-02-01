@@ -17,7 +17,8 @@ const RecentMaintenanceTable: React.FC = () => {
     const fetchMaintenanceData = async () => {
       try {
         const BACKEND_URL =
-          process.env.BACKEND_URL || "https://maintenance-fake-data.vercel.app";
+          process.env.NEXT_PUBLIC_BACKEND_URL ||
+          "https://maintenance-fake-data.vercel.app";
         const [maintenanceRes, equipmentRes] = await Promise.all([
           fetch(`${BACKEND_URL}/maintenance`),
           fetch(`${BACKEND_URL}/equipment`),
@@ -30,7 +31,7 @@ const RecentMaintenanceTable: React.FC = () => {
         // Create a map of equipmentId to equipmentName
         const equipmentMap = equipmentRecords.reduce<Record<string, string>>(
           (acc, equipment) => {
-            acc[equipment.id] = equipment.name;
+            acc[equipment._id] = equipment.name;
             return acc;
           },
           {}
@@ -80,7 +81,7 @@ const RecentMaintenanceTable: React.FC = () => {
       </thead>
       <tbody>
         {maintenanceData.map((record) => (
-          <tr key={record.id}>
+          <tr key={record._id}>
             {/* <td style={{ border: "1px solid #ddd", padding: "8px" }}>
               {record.id}
             </td> */}
@@ -108,7 +109,7 @@ const RecentMaintenanceTable: React.FC = () => {
             </td>
             <td style={{ border: "1px solid #ddd", padding: "8px" }}>
               <Link
-                href={`/maintenance/${record.id}`}
+                href={`/maintenance/${record._id}`}
                 className="text-blue-500 hover:text-blue-700"
               >
                 visit

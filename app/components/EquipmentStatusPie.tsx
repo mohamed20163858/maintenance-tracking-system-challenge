@@ -27,7 +27,8 @@ const EquipmentStatusPie: React.FC = () => {
     const fetchEquipment = async () => {
       try {
         const BACKEND_URL =
-          process.env.BACKEND_URL || "https://maintenance-fake-data.vercel.app";
+          process.env.NEXT_PUBLIC_BACKEND_URL ||
+          "https://maintenance-fake-data.vercel.app";
         const response = await fetch(`${BACKEND_URL}/equipment`);
         if (!response.ok) {
           throw new Error("Failed to fetch equipment data");

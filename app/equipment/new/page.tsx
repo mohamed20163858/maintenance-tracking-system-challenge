@@ -8,7 +8,8 @@ const EquipmentFormPage = () => {
   const handleCreate = async (data: EquipmentFormValues) => {
     try {
       const BACKEND_URL =
-        process.env.BACKEND_URL || "https://maintenance-fake-data.vercel.app";
+        process.env.NEXT_PUBLIC_BACKEND_URL ||
+        "https://maintenance-fake-data.vercel.app";
       const response = await fetch(`${BACKEND_URL}/equipment`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },

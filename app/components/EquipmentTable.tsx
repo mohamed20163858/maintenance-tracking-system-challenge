@@ -83,7 +83,7 @@ const EquipmentTable: React.FC<{ data: Equipment[] }> = ({ data }) => {
           filterVariant: "statusSelect",
         },
         cell: (info) => {
-          const id = info.row.original.id; // Unique row identifier
+          const id = info.row.original._id; // Unique row identifier
           const currentStatus = statusChanges[id] ?? info.getValue();
           return (
             <select
@@ -104,7 +104,7 @@ const EquipmentTable: React.FC<{ data: Equipment[] }> = ({ data }) => {
           );
         },
       }),
-      columnHelper.accessor("id", {
+      columnHelper.accessor("_id", {
         header: "View",
         meta: {
           filterVariant: "view",
@@ -147,7 +147,8 @@ const EquipmentTable: React.FC<{ data: Equipment[] }> = ({ data }) => {
   const applyBulkStatusUpdate = async () => {
     try {
       const BACKEND_URL =
-        process.env.BACKEND_URL || "https://maintenance-fake-data.vercel.app";
+        process.env.NEXT_PUBLIC_BACKEND_URL ||
+        "https://maintenance-fake-data.vercel.app";
       const updatePromises = Object.entries(statusChanges).map(([id, status]) =>
         fetch(`${BACKEND_URL}/equipment/${id}`, {
           method: "PATCH", // or PUT

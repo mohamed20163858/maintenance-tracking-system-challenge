@@ -58,7 +58,8 @@ const MaintenanceTable: React.FC<{
     () => [
       columnHelper.accessor("equipmentId", {
         header: "Equipment Name",
-        cell: (info) => equipmentMap[info.getValue()] || "Unknown",
+        cell: (info) =>
+          equipmentMap[info.getValue() as unknown as string] || "Unknown",
         enableGrouping: true, // Allow grouping by this column
         filterFn: (row, columnId, filterValue) => {
           const equipmentId = row.getValue(columnId) as string; // Cast to string
@@ -116,7 +117,7 @@ const MaintenanceTable: React.FC<{
           filterVariant: "completionStatusSelect",
         },
       }),
-      columnHelper.accessor("id", {
+      columnHelper.accessor("_id", {
         header: "View",
         meta: {
           filterVariant: "view",

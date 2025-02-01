@@ -4,6 +4,8 @@
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation"; // Using useParams from Next.js App Router
 import MaintenanceForm from "../../../components/MaintenanceRecordForm";
+
+import { MaintenanceRecordFormValues } from "../../../types/maintenanceSchema";
 import { MaintenanceRecord } from "../../../types/maintenance";
 
 const EditMaintenancePage = () => {
@@ -19,12 +21,15 @@ const EditMaintenancePage = () => {
       const fetchMaintenance = async () => {
         try {
           const BACKEND_URL =
-            process.env.BACKEND_URL ||
+            process.env.NEXT_PUBLIC_BACKEND_URL ||
             "https://maintenance-fake-data.vercel.app";
           const response = await fetch(`${BACKEND_URL}/maintenance/${id}`);
           const data = await response.json();
           if (response.ok) {
-            setMaintenance(data);
+            setMaintenance({
+              ...data,
+              equipmentId: data.equipmentId._id, // Transform equipmentId to string
+            });
           } else {
             setError("Failed to fetch maintenance data");
           }
@@ -39,11 +44,12 @@ const EditMaintenancePage = () => {
     }
   }, [id]);
 
-  const handleUpdate = async (data: Omit<MaintenanceRecord, "id">) => {
+  const handleUpdate = async (data: MaintenanceRecordFormValues) => {
     try {
       const recordWithId = { id, ...data }; // Add the `id` back
       const BACKEND_URL =
-        process.env.BACKEND_URL || "https://maintenance-fake-data.vercel.app";
+        process.env.NEXT_PUBLIC_BACKEND_URL ||
+        "https://maintenance-fake-data.vercel.app";
       const response = await fetch(`${BACKEND_URL}/maintenance/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -72,7 +78,11 @@ const EditMaintenancePage = () => {
           Maintenance Record Update Form
         </h1>
         <MaintenanceForm
-          existingMaintenance={maintenance}
+          existingMaintenance={
+            maintenance
+              ? { ...maintenance, equipmentId: maintenance.equipmentId }
+              : undefined
+          }
           onSubmit={handleUpdate}
         />
       </div>

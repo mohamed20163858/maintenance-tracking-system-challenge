@@ -19,7 +19,8 @@ const MaintenancePage = () => {
   const fetchData = async () => {
     try {
       const BACKEND_URL =
-        process.env.BACKEND_URL || "https://maintenance-fake-data.vercel.app";
+        process.env.NEXT_PUBLIC_BACKEND_URL ||
+        "https://maintenance-fake-data.vercel.app";
       const [maintenanceRes, equipmentRes] = await Promise.all([
         fetch(`${BACKEND_URL}/maintenance`),
         fetch(`${BACKEND_URL}/equipment`),
@@ -32,7 +33,7 @@ const MaintenancePage = () => {
       // Create a map of equipmentId to equipmentName
       const equipmentMap = equipmentRecords.reduce<Record<string, string>>(
         (acc, equipment) => {
-          acc[equipment.id] = equipment.name;
+          acc[equipment._id] = equipment.name;
           return acc;
         },
         {}

@@ -1,5 +1,5 @@
 export interface Equipment {
-  id: string; // Unique identifier for the equipment
+  _id: string; // Unique identifier for the equipment
   name: string; // Name of the equipment
   location: string; // Physical location of the equipment
   department: "Machining" | "Assembly" | "Packaging" | "Shipping"; // Department to which the equipment belongs
